@@ -1,0 +1,21 @@
+*{
+    padding: 0px;
+    margin:0px;
+    box-sizing:border-box;
+}
+
+body {
+  background : linear-gradient(90deg,rgba(3, 0, 53, 0.90)0%,rgba(32 32 126)35%,rgb(27, 173, 206)100%);
+}
+.card{
+    width :24%;
+    background-color:white;
+    border-radius : 20px;
+    margin-top :150px;
+}
+.btn-primary {
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(90deg,rgba(3, 0, 53, 0.90)0%,rgba(32 32 126)35%,rgb(27, 173, 206)100%);
+}
