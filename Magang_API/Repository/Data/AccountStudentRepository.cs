@@ -4,27 +4,28 @@ using Magang_API.Handler;
 using Magang_API.Model;
 using Magang_API.Repository.Contracts;
 using Magang_API.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace Magang_API.Repository.Data
 {
     public class AccountStudentRepository : BaseRepository<AccountStudent, string, MyContexts>, IAccountStudentRepository
     {
         private readonly IUniversityRepository _universityRepository;
-        private readonly IStudentRepository _studentRepository;
         private readonly IAccountStudentRoleRepository _studentRoleRepository;
         public AccountStudentRepository(MyContexts context,
         IUniversityRepository universityRepository,
-        IStudentRepository studentRepository,IAccountStudentRoleRepository studentRoleRepository
+        IAccountStudentRoleRepository studentRoleRepository
             ) : base(context)
         {
             _universityRepository = universityRepository;
-            _studentRepository = studentRepository;
             _studentRoleRepository = studentRoleRepository;
         }
 
+
+
         public async Task<bool> LoginAsync(LoginVM loginVM)
         {
-            var getStudent = await _studentRepository.GetAllAsync();
+            var getStudent = await _context.Students.ToListAsync();
             var getAccounts = await GetAllAsync();
 
             var getUserData = getStudent.Join(getAccounts,
@@ -59,7 +60,7 @@ namespace Magang_API.Repository.Data
                 });
 
 
-                // Employee
+                // Student
                 var student = new Student
                 {
                     Nim = registerStudentVM.NIM,
@@ -75,7 +76,8 @@ namespace Magang_API.Repository.Data
                     PhoneNumber = registerStudentVM.PhoneNumber,
 
                 };
-                await _studentRepository.InsertAsync(student);
+                await _context.Students.AddAsync(student);
+                await _context.SaveChangesAsync();
                 // Account
                 var account = new AccountStudent
                 {
@@ -98,6 +100,11 @@ namespace Magang_API.Repository.Data
             {
                 await transaction.RollbackAsync();
             }
+        }
+        public override Task<int> DeleteAsync(string key)
+        {
+            _studentRoleRepository.DeleteAsync(key);
+            return base.DeleteAsync(key);
         }
     }
 }

@@ -11,8 +11,10 @@ namespace Magang_API.Repository.Data
 {
     public class StudentRepository : BaseRepository<Student, string, MyContexts>, IStudentRepository
     {
-        public StudentRepository(MyContexts context) : base(context)
+       private readonly IAccountStudentRepository _studentRepository;
+        public StudentRepository(MyContexts context, IAccountStudentRepository studentRepository) : base(context)
         {
+            _studentRepository = studentRepository;
         }
 
         public async Task<int> AprovalFalse(StudentAproval aproval)
@@ -61,9 +63,50 @@ namespace Magang_API.Repository.Data
             return await _context.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<StudentProfilVM>> GetAllStudentProfil()
+        {
+            var getdata = (from s in _context.Students
+
+                          select new StudentProfilVM()
+                          {
+                              Nim = s.Nim,
+                              FullName = string.Concat(s.FirstName + " " + s.LastName),
+                              Email = s.Email,
+                              University = s.Universitas.Name,
+                              Major = s.Major,
+                              Degree = s.Degree,
+                              Gpa = Convert.ToDecimal(s.Gpa),
+                              Mentor = s.Status.Mentor.FirstName+" "+s.Status.Mentor.LastName,
+                              Department = s.Status.Department.Name,
+                              Status = s.Status.Status1,
+                              StartDate = s.Status.StartDate,
+                              EndDate = s.Status.EndDate,
+                          }).ToListAsync();
+            return await getdata;
+        }
+
+        public async Task<IEnumerable<dynamic>> GetAllStudentsFalseAproval()
+        {
+            var students = (from a in _context.Students
+                            let fullname = a.FirstName + " " + a.LastName
+                            where a.IsApproval == false
+                            select new
+                            {
+                                a.Nim,
+                                fullname,
+                                a.Email,
+                                a.Major,
+                                a.Universitas.Name,
+                                a.Degree,
+                                a.Gpa,
+                                a.PhoneNumber,
+
+                            }).ToListAsync();
+            return await students;
+        }
+
         public async Task<IEnumerable<dynamic>> GetAllStudentsNoAproval()
         {
-
 
             var students = (from a in _context.Students
                            let fullname = a.FirstName+" "+a.LastName
@@ -81,6 +124,79 @@ namespace Magang_API.Repository.Data
                                
                            }).ToListAsync();
             return await students;
+        }
+
+        public async Task<IEnumerable<dynamic>> GetAllStudentsTrueAproval()
+        {
+            var students = (from a in _context.Students
+                            let fullname = a.FirstName + " " + a.LastName
+                            where a.IsApproval == true
+                            select new
+                            {
+                                a.Nim,
+                                fullname,
+                                a.Email,
+                                a.Major,
+                                a.Universitas.Name,
+                                a.Degree,
+                                a.Gpa,
+                                a.PhoneNumber,
+
+                            }).ToListAsync();
+            return await students;
+        }
+
+        public async Task<IEnumerable<dynamic>> GetStudentByNik(string nik)
+        {
+            var data = await _context.Statuses.Where(x=>x.MentorId == nik).ToListAsync();
+            var students = await GetAllStudentProfil();
+            var getdata = from student in students
+                          join x in data
+                          on student.Nim equals x.StudentId
+                          select new
+                          {
+                              student.Nim,
+                              student.FullName,
+                              student.Email,
+                              student.University,
+                              student.Major,
+                              student.Degree,
+                              student.Gpa,
+                              student.StartDate, 
+                              student.EndDate,
+                              student.Status,
+                              student.Mentor,
+                              x.MentorId
+                             
+                          };
+            return getdata;
+        }
+
+        public async Task<IEnumerable<dynamic>> GetStudentByNim(string nim)
+        {
+            var data = await GetAllStudentProfil();
+            var students = await _context.Students.Where(a=>a.Nim == nim).ToListAsync();
+            var getdata = from d in data
+                          join s in students
+                          on d.Nim equals s.Nim
+                          select new
+                          {
+                              s.Nim,
+                              d.FullName,
+                              d.Email,
+                              d.University,
+                              d.Major,
+                              d.Degree,
+                              d.Gpa,
+                          };
+            return getdata;
+        }
+
+        public async Task<int> GetStudentCountAprovalAsync()
+        {
+            var students = await _context.Students.Where(x => x.IsApproval == true).CountAsync();
+
+            return students;
         }
 
         public async Task<int> GetStudentCountAsync()
@@ -112,6 +228,12 @@ namespace Magang_API.Repository.Data
                 Email = student.Email,
                 FullName = string.Concat(student.FirstName, " ", student.LastName)
             };
+        }
+
+        public override Task<int> DeleteAsync(string key)
+        {
+            _studentRepository.DeleteAsync(key);
+            return base.DeleteAsync(key);
         }
 
     }

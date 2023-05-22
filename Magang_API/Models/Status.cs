@@ -16,7 +16,7 @@ public partial class Status
 
     public DateTime? EndDate { get; set; }
 
-    public bool? Status1 { get; set; }
+    public bool? Status1 { get; set; } = null!;
     [JsonIgnore]
     public virtual Department? Department { get; set; }
     [JsonIgnore]

@@ -28,12 +28,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/HRD/Aproval.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXEFwcm92YWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/HRD/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/HRD/StudentNeedAproval.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXFN0dWRlbnROZWVkQXByb3ZhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/University/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pdmVyc2l0eVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/_ViewImports.cshtml]

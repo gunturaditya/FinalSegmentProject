@@ -1,6 +1,39 @@
+using Client.Base;
+using Client.Repository.Data;
+using Client.Repository.Interface;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
+builder.Services.AddScoped(typeof(IBaseRepository<,>), typeof(BaseRepository<,>));
+builder.Services.AddScoped<IUniversityRepository, UniversityRepository>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new()
+        {
+            ValidateAudience = true,
+            ValidAudience = builder.Configuration["JWT:Audience"],
+            ValidateIssuer = true,
+            ValidIssuer = builder.Configuration["JWT:Issuer"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -18,6 +51,24 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+
+
+app.UseSession();
+
+//Add JWToken to all incoming HTTP Request Header
+app.Use(async (context, next) =>
+{
+    var JWToken = context.Session.GetString("JWToken");
+
+    if (!string.IsNullOrEmpty(JWToken))
+    {
+        context.Request.Headers.Add("Authorization", "Bearer " + JWToken);
+    }
+
+    await next();
+});
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

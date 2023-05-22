@@ -37,10 +37,71 @@ namespace Magang_API.Controllers
                 data = result
             });
         }
+        [HttpGet("CountTrueAproval")]
+        public async Task<ActionResult> getStudentCountAprovalTrue()
+        {
+            var result = await _repository.GetStudentCountAprovalAsync();
+
+            if (result == null)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+            return Ok(new
+            {
+                statusCode = 200,
+                message = "Data Found!",
+                data = result
+            });
+        }
         [HttpGet("StudentNullAproval")]
-        public async Task<ActionResult> getStudentListAproval()
+        public async Task<ActionResult> getStudentListAprovalNull()
         {
             var result = await _repository.GetAllStudentsNoAproval();
+
+            if (result.Count()==0)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+            return Ok(new
+            {
+                statusCode = 200,
+                message = "Data Found!",
+                data = result
+            });
+        }
+        [HttpGet("StudentTrueAproval")]
+        public async Task<ActionResult> getStudentListAprovalTrue()
+        {
+            var result = await _repository.GetAllStudentsTrueAproval();
+
+            if (result == null)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+            return Ok(new
+            {
+                statusCode = 200,
+                message = "Data Found!",
+                data = result
+            });
+        }
+
+        [HttpGet("StudentFalseAproval")]
+        public async Task<ActionResult> getStudentListAprovalFalse()
+        {
+            var result = await _repository.GetAllStudentsFalseAproval();
 
             if (result == null)
             {
@@ -113,6 +174,65 @@ namespace Magang_API.Controllers
             {
                 statusCode = 200,
                 message = "Data Updated!"
+            });
+        }
+        [HttpGet("StudentProfil")]
+        public async Task<ActionResult> StudentProfil()
+        {
+            var result = await _repository.GetAllStudentProfil();
+
+            if (result is null)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+
+            return Ok(new
+            {
+                statusCode = 200,
+                message = "Data Found!",
+                data = result
+            });
+        }
+        [HttpGet("student/{nik}")]
+        public async Task<ActionResult> getStudentByNik(string nik)
+        {
+            var result = await _repository.GetStudentByNik(nik);
+            if (result.Count() is 0)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+            return Ok(new
+            {
+                statusCode = 200,
+                message = "Data Found!",
+                data = result
+            });
+        }
+        [HttpGet("StudentByNim/{nim}")]
+        public async Task<ActionResult> getStudentByNim(string nim)
+        {
+            var result = await _repository.GetStudentByNim(nim);
+            if (result.Count() is 0)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+            return Ok(new
+            {
+                statusCode = 200,
+                message = "Data Found!",
+                data = result
             });
         }
     }

@@ -99,6 +99,25 @@ namespace Magang_API.Repository.Data
 
         }
 
+        public async Task<IEnumerable<dynamic>> GetEmployeeByDepartment(string name)
+        {
+            var departments = await _context.Departments.Where(x=>x.Name==name).ToListAsync();
+
+            var employee = await GetAllAsync();
+
+            var getdata = from e in employee
+                          join d in departments
+                          on e.DepartmentId equals d.Id
+                          let fullname = string.Concat(e.FirstName + " " + e.LastName)
+                          select new
+                          {
+                              e.Nik,
+                              fullname,
+                              d.Name
+                          };
+            return getdata ;
+        }
+
         public async Task<UserDataVM> GetUserDataByEmailAsync(string email)
         {
             var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Email == email);

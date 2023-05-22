@@ -15,7 +15,7 @@ namespace Magang_API.Base
         {
             _context = context;
         }
-        public async Task<int> DeleteAsync(TKey key)
+       virtual public async Task<int> DeleteAsync(TKey key)
         {
             var entity = await GetByIdAsync(key);
             if (entity is null)

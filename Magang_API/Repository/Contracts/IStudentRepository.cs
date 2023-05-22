@@ -9,9 +9,18 @@ namespace Magang_API.Repository.Contracts
         Task<UserDataVM> GetUserDataByEmailAsync(string email);
         Task<int> GetStudentCountAsync();
 
+        Task<int> GetStudentCountAprovalAsync();
+
         Task<IEnumerable<dynamic>> GetAllStudentsNoAproval();
+        Task<IEnumerable<dynamic>> GetAllStudentsTrueAproval();
+        Task<IEnumerable<dynamic>> GetAllStudentsFalseAproval();
         Task<IEnumerable<string>> GetUniversitasAsyncbyid(int id);
         Task<int>AprovalTrue(StudentAproval student);
         Task<int> AprovalFalse(StudentAproval student);
+
+        Task<IEnumerable<StudentProfilVM>> GetAllStudentProfil();
+
+        Task<IEnumerable<dynamic>> GetStudentByNik(string nik);
+        Task<IEnumerable<dynamic>> GetStudentByNim(string nim);
     }
 }
