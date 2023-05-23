@@ -12,16 +12,25 @@ namespace Magang_API.Repository.Data
     {
         private readonly IUniversityRepository _universityRepository;
         private readonly IAccountStudentRoleRepository _studentRoleRepository;
+        private readonly IStudentRepository _studentRepository;
         public AccountStudentRepository(MyContexts context,
         IUniversityRepository universityRepository,
-        IAccountStudentRoleRepository studentRoleRepository
+        IAccountStudentRoleRepository studentRoleRepository,IStudentRepository studentRepository
             ) : base(context)
         {
             _universityRepository = universityRepository;
             _studentRoleRepository = studentRoleRepository;
+            _studentRepository = studentRepository;
         }
 
+        public async Task<int> DeleteAccount(string id)
+        {
+            await _studentRoleRepository.DeleteAsync(id);
+            await DeleteAsync(id);
 
+            return await _studentRepository.DeleteAsync(id);
+
+        }
 
         public async Task<bool> LoginAsync(LoginVM loginVM)
         {
@@ -101,10 +110,6 @@ namespace Magang_API.Repository.Data
                 await transaction.RollbackAsync();
             }
         }
-        public override Task<int> DeleteAsync(string key)
-        {
-            _studentRoleRepository.DeleteAsync(key);
-            return base.DeleteAsync(key);
-        }
+
     }
 }

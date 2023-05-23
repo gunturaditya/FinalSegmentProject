@@ -11,10 +11,10 @@ namespace Magang_API.Repository.Data
 {
     public class StudentRepository : BaseRepository<Student, string, MyContexts>, IStudentRepository
     {
-       private readonly IAccountStudentRepository _studentRepository;
-        public StudentRepository(MyContexts context, IAccountStudentRepository studentRepository) : base(context)
+       
+        public StudentRepository(MyContexts context) : base(context)
         {
-            _studentRepository = studentRepository;
+            
         }
 
         public async Task<int> AprovalFalse(StudentAproval aproval)
@@ -129,8 +129,9 @@ namespace Magang_API.Repository.Data
         public async Task<IEnumerable<dynamic>> GetAllStudentsTrueAproval()
         {
             var students = (from a in _context.Students
+                            
                             let fullname = a.FirstName + " " + a.LastName
-                            where a.IsApproval == true
+                            where a.IsApproval == true && a.Status == null
                             select new
                             {
                                 a.Nim,
@@ -230,11 +231,6 @@ namespace Magang_API.Repository.Data
             };
         }
 
-        public override Task<int> DeleteAsync(string key)
-        {
-            _studentRepository.DeleteAsync(key);
-            return base.DeleteAsync(key);
-        }
 
     }
 }

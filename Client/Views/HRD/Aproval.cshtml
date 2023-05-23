@@ -86,13 +86,13 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Deparment</label>
-                            <select class="form-control" id="Department">
+                            <select name="Department" class="form-control" id="Department" onchange="getdepart(this.value)">
                                <option value="">----Pilih Department---</option>
                             </select>
                         </div>
                         <div class="mb-3 ">
                             <label class="form-label">Mentor</label>
-                            <select class="form-control" id="mentor">
+                            <select name="Mentor" class="form-control" id="Mentor">
                                 <option value="">----Pilih Mentor---</option>
                             </select>
                         </div>
@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <label>Stardate</label>
                                 <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                                    <input type="datetime-local" class="form-control " />
+                                    <input type="datetime-local" class="form-control " id="startdate" />
                                     <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
@@ -111,7 +111,7 @@
                             <div class="form-group">
                                 <label>Enddate</label>
                                 <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                                    <input type="datetime-local" class="form-control datetimepicker-input" />
+                                    <input type="datetime-local" class="form-control datetimepicker-input" id="endDate" />
                                     <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>

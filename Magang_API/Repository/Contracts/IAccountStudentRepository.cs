@@ -9,6 +9,6 @@ namespace Magang_API.Repository.Contracts
         Task RegisterStudentAsync(RegisterStudentVM registerStudentVM);
         Task<bool> LoginAsync(LoginVM loginVM);
 
-        
+        Task<int> DeleteAccount(string id);
     }
 }

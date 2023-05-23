@@ -73,7 +73,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="nav-link text-dark collapse-item" asp-area="" asp-controller="Home" asp-action="Index">Aproval</a>
+                        <a class="nav-link text-dark collapse-item" asp-area="" asp-controller="HRD" asp-action="StudentNeedAproval">Aproval</a>
                         <a class="nav-link text-dark collapse-item" asp-area="" asp-controller="HRD" asp-action="Aproval">Penempatan</a>
                     </div>
                 </div>
@@ -390,6 +390,9 @@
 
     <!-- data table-->
      <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+     <!--SweetAlert-->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

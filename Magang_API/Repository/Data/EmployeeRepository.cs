@@ -99,9 +99,9 @@ namespace Magang_API.Repository.Data
 
         }
 
-        public async Task<IEnumerable<dynamic>> GetEmployeeByDepartment(string name)
+        public async Task<IEnumerable<dynamic>> GetEmployeeByIdDepartment(int id)
         {
-            var departments = await _context.Departments.Where(x=>x.Name==name).ToListAsync();
+            var departments = await _context.Departments.Where(x=>x.Id==id).ToListAsync();
 
             var employee = await GetAllAsync();
 

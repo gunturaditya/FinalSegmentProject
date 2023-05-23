@@ -12,5 +12,6 @@ namespace Magang_API.Repository.Data
         public StatusRepository(MyContexts context) : base(context)
         {
         }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Client.Repository.Interface;
 using Client.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
 

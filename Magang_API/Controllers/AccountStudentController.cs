@@ -14,5 +14,25 @@ namespace Magang_API.Controllers
         public AccountStudentController(IAccountStudentRepository repository) : base(repository)
         {
         }
+        [HttpDelete("student/{id}")]
+        public async Task<ActionResult> DeleteAccount(string id)
+        {
+            var result = await _repository.DeleteAccount(id);
+
+            if (result is 0)
+            {
+                return Conflict(new
+                {
+                    statusCode = 409,
+                    message = "Data Fail to Delete!"
+                });
+            }
+
+            return Ok(new
+            {
+                statusCode = 200,
+                message = "Data Deleted!"
+            });
+        }
     }
 }

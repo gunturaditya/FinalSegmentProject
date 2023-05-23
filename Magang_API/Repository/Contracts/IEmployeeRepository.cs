@@ -12,6 +12,6 @@ namespace Magang_API.Repository.Contracts
         Task<IEnumerable<dynamic>> GetDataEmployePembina();
         Task<IEnumerable<dynamic>> GetDataProfileBynik(string nik);
 
-        Task<IEnumerable<dynamic>> GetEmployeeByDepartment(string name);
+        Task<IEnumerable<dynamic>> GetEmployeeByIdDepartment(int id);
     }
 }

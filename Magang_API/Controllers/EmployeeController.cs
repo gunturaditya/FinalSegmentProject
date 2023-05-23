@@ -57,10 +57,10 @@ namespace Magang_API.Controllers
             });
         }
 
-        [HttpGet("employe/{department}")]
-        public async Task<ActionResult<EmployeeProfileVM>> EmployeeGetByDepartment(string department)
+        [HttpGet("employe/{DepartmentId}")]
+        public async Task<ActionResult<EmployeeProfileVM>> EmployeeGetByDepartment(int DepartmentId)
         {
-            var result = await _repository.GetEmployeeByDepartment(department);
+            var result = await _repository.GetEmployeeByIdDepartment(DepartmentId);
 
 
             if (result.Count() is 0)
