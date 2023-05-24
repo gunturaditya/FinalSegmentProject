@@ -68,7 +68,6 @@ namespace Magang_API.Repository.Data
                     Name = registerStudentVM.UniversityName
                 });
 
-
                 // Student
                 var student = new Student
                 {

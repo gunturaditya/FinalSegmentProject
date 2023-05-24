@@ -15,6 +15,12 @@ builder.Services.AddSession();
 builder.Services.AddScoped(typeof(IBaseRepository<,>), typeof(BaseRepository<,>));
 builder.Services.AddScoped<IUniversityRepository, UniversityRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IAccountStudentRepository, AccountStudentRepository>();
+
+builder.Services.AddSession(options => {
+    options.IdleTimeout = TimeSpan.FromSeconds(30);
+});
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

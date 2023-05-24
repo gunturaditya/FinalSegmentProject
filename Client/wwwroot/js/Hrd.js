@@ -30,7 +30,11 @@ $.ajax({
         console.log(res)
     })
 }*/
-
+let table = new $("#tableStudent");
+let table1 = new $("#tableStudentAproval");
+let table2 = new $("#tableStudentNoAproval");
+let table3 = new $("#tableEmployee");
+//let table4 = new $("#tableGetStudent");
 $(document).ready(function () {
 
     $.ajax({
@@ -56,7 +60,7 @@ $(document).ready(function () {
         $("#StudentAproval").html(res.data);
     })
 
-    let table = new $('#tableStudent').DataTable({
+    table.DataTable({
 
         "ajax": {
             "url": "https://localhost:7004/api/Student/StudentNullAproval",
@@ -82,7 +86,7 @@ $(document).ready(function () {
         ]
 
     });
-    let table1 = new $('#tableStudentAproval').DataTable({
+    table1.DataTable({
 
         "ajax": {
             "url": "https://localhost:7004/api/Student/StudentTrueAproval",
@@ -108,7 +112,7 @@ $(document).ready(function () {
         ]
 
     });
-    let table2 = new $('#tableStudentNoAproval').DataTable({
+    table2.DataTable({
 
         "ajax": {
             "url": "https://localhost:7004/api/Student/StudentFalseAproval",
@@ -134,8 +138,97 @@ $(document).ready(function () {
         ]
 
     });
+    table3.DataTable({
+
+        "ajax": {
+            "url": "https://localhost:7004/api/Employee/ProfileEmployee",
+            "dataType": "json",
+            "dataSrc": "data",
+
+        },
+        columns: [
+            { data: "nik" },
+            { data: "fullName" },
+            { data: "email" },
+            { data: "university" },
+            { data: "major" },
+            { data: "name" },
+            {
+                data: "",
+                render: (data, type, row) => {
+                    return `<button class="btn btn-info" onclick="getBynik('${row.nik}')">Cek</button>`
+                }
+            },
+        ]
+
+    });
+
+    let table4 = new $("#tableGetStudent").DataTable();
 });
 
+/*function getBynik(stringUrl) {
+    table4.DataTable({
+        "ajax": {
+            "url": "https://localhost:7004/api/Student/student/" + stringUrl,
+            "dataType": "json",
+            "dataSrc": "data",
+        },
+        columns: [
+            { data: "nim" },
+            { data: "fullName" },
+            { data: "email" },
+            { data: "university" },
+            { data: "endDate" },
+            { data: "status" },
+            {
+                data: "",
+                render: (data, type, row) => {
+                    return `<button class="btn btn-info" onclick="getBynim('${row.nim}')">Detail</button>`
+                }
+            },
+        ]
+
+    });
+}*/
+function getBynik(stringUrl) {
+    $.ajax({
+        url: "https://localhost:7004/api/Student/student/" + stringUrl
+    }).done((res) => {
+        console.log(res);
+        let temp = "";
+        $.each(res.data, (key, val) => {
+            
+            temp += `<tr>
+              <td>${val.nim}</td>
+              <td>${val.fullName}</td>
+              <td>${val.email}</td>
+              <td>${val.university}</td>
+              <td>${val.endDate}</td>
+              <td>${val.status}</td>
+              <td>
+             <button type="button" class="btn btn-info "onclick="getNimStudent('${val.nim}')" style="margin:10px 0px" data-bs-toggle="modal" data-bs-target="#ModalDetail">Detail</button>
+              </td>
+                </tr>`;
+        });
+        $("#tbStudent").html(temp);
+    });
+}
+function getNimStudent(stringUrl) {
+    $.ajax({
+        url: "https://localhost:7004/api/Student/StudentByNim/" + stringUrl
+    }).done((res) => {
+        //console.log(res);
+        $.each(res.data, (key, val) => {
+            $("#fullname").html(val.fullName);
+            $("#universias").html(val.university);
+            $("#Nim").html(val.nim);
+            $("#email").html(val.email);
+            $("#Major").html(val.major);
+            $("#degree").html(val.degree);
+            $("#Gpa").html(val.gpa);
+        })
+    })
+}
 function getById(stringUrl) {
     $.ajax({
         url: "https://localhost:7004/api/Student/StudentByNim/" + stringUrl,
@@ -171,11 +264,13 @@ function Aproval() {
         data: JSON.stringify(obj)
     }).done((result) => {
         console.log(result);
+        
         Swal.fire(
             'Berhasil?',
             'input data',
-            'success'
+            'success',
         )
+        table.ajax.reload()
        
         //buat alert pemberitahuan jika success
     }).fail((error) => {
@@ -208,8 +303,9 @@ function NoAproval() {
         Swal.fire(
             'Berhasil?',
             'input data',
-            'success'
+            'success',
         )
+        table.ajax.reload()
         //buat alert pemberitahuan jika success
     }).fail((error) => {
         console.log(error)
@@ -283,6 +379,7 @@ function SimpanStatus() {
             'input data',
             'success'
         )
+        table1.ajax.reload();
         //buat alert pemberitahuan jika success
     }).fail((error) => {
         Swal.fire(
@@ -327,7 +424,7 @@ function DeleteStudent(stringUrl) {
                 },
                 data: "json"
             }).done(res => {
-                console.log(res)
+                table2.ajax.reload();
                 
             })
         } else if (
@@ -341,4 +438,44 @@ function DeleteStudent(stringUrl) {
             )
         }
     })
+}
+
+let xmlhttp = new XMLHttpRequest();
+let url = "https://localhost:7004/api/Student/StudentChart";
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+        let res = JSON.parse(this.responseText);
+        console.log(res)
+        universitasName = res.data.map(function (elem) {
+            return elem.universitasName;
+        })
+       // console.log(universitasName);
+        count = res.data.map(function (elem) {
+            return elem.count;
+        })
+        //console.log(count);
+        const ctx = document.getElementById('canvas');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: universitasName,
+                datasets: [{
+                    data: count,
+                    borderWidth: 1,
+                    backgroundColor: "#ff33",
+                    borderColor: '#36A2EB',
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    }
+                }
+            }
+        });
+    }
 }

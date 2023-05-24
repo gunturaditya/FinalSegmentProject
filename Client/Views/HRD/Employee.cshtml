@@ -1,0 +1,109 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "LayoutHrd";
+}
+<button class="btn btn-secondary ml-4 mt-2 mb-1" style="width:130px;"> Create</button>
+
+<div class="container-fluid" style="border :solid 2px;">
+    <div class="row">
+        <div class="col-md-6">
+            <b><h2 class="text-center"> Table Employee</h2></b>
+            <div class="table-responsive">
+                <table id="tableEmployee" class="table table-striped table-hover table-bordered table-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nik</th>
+                            <th>Fullname</th>
+                            <th>Email</th>
+                            <th>Universitas</th>
+                            <th>Major</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <b><h2 class="text-center"> Table Student</h2></b>
+            <div class="table-responsive">
+                <table id="tableGetStudent" class="table table-striped table-hover table-bordered table-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nim</th>
+                            <th>Fullname</th>
+                            <th>Email</th>
+                            <th>Universitas</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbStudent">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="ModalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <b><h5 class="modal-title text-center" id="exampleModalLabel">Profil Student</h5></b>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4" style="border:1px solid; width:80px;height:100px;"></div>
+                    <div class="col-md-8">
+                           <div class="mb-2"> 
+                               <h3 class="text-center" id="fullname"></h3>
+                           </div>
+                        <div class="mb-2">
+                            <span>NIM : </span> <span id="Nim"></span>
+                        </div>
+                           <div class="mb-2">
+                               <span>Email : </span> <span id="email"></span>
+                           </div>
+                        <div class="mb-2">
+                            <span>Universitas : </span> <span id="universias"></span>
+                        </div>
+                        <div class="mb-2">
+                            <span>Major : </span> <span id="Major"></span>
+                        </div>
+                        <div class="mb-2">
+                            <span>Degree : </span> <span id="degree"></span>
+                        </div>
+                        <div class="mb-2">
+                            <span>Gpa : </span> <span id="Gpa"></span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+               
+
+            <div class="modal-footer justify-content-md-start ">
+
+                <button type="button" class="btn btn-secondary col-md-2 " data-bs-dismiss="modal">Close</button>
+                <div class="col-md-7"></div>
+                <button type="button" class="btn btn-success col-md-2" onclick="SimpanStatus()">Simpan</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    <script src="~/js/Hrd.js"></script>
+}

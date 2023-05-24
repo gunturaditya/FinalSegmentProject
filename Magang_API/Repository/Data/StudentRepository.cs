@@ -193,9 +193,24 @@ namespace Magang_API.Repository.Data
             return getdata;
         }
 
+        public async Task<IEnumerable<StudentChart>> GetStudentCharts()
+        {
+            var student = await GetAllStudentProfil();
+
+            var getdata = (from s in student
+                          where s.Status == true
+                          group s by(s.University,s.Status) into g
+                          select new StudentChart
+                          {
+                              UniversitasName = g.Key.University,
+                              Count = g.Count(),
+                          }).ToList();
+            return getdata;
+        }
+
         public async Task<int> GetStudentCountAprovalAsync()
         {
-            var students = await _context.Students.Where(x => x.IsApproval == true).CountAsync();
+            var students = await _context.Students.Where(x => x.IsApproval == true && x.Status == null).CountAsync();
 
             return students;
         }

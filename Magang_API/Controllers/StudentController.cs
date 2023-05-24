@@ -235,5 +235,25 @@ namespace Magang_API.Controllers
                 data = result
             });
         }
+        [HttpGet("StudentChart")]
+        public async Task<ActionResult> getStudentChart()
+        {
+            var result = await _repository.GetStudentCharts();
+
+            if (result == null)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+            return Ok(new
+            {
+                statusCode = 200,
+                message = "Data Found!",
+                data = result
+            });
+        }
     }
 }

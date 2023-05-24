@@ -19,76 +19,42 @@ namespace Magang_API.Controllers
         private readonly ITokenService _tokenService;
         private readonly IAccountRoleRepository _accountRoleRepository;
         private readonly IEmployeeRepository _employeeRepository;
-        private readonly IAccountStudentRepository _accountStudentRepository;
-        private readonly IStudentRepository _studentRepository;
-        private readonly IAccountStudentRoleRepository _studentRoleRepository;
+
         public AccountController(IAccountRepository repository,
                                     ITokenService tokenService,
                                     IAccountRoleRepository accountRoleRepository,
-                                    IEmployeeRepository employeeRepository,
-                                    IAccountStudentRepository accountStudentRepository,
-                                    IStudentRepository studentRepository,
-                                    IAccountStudentRoleRepository accountStudentRoleRepository)
+                                    IEmployeeRepository employeeRepository)
                                     : base(repository)
         {
             _tokenService = tokenService;
             _accountRoleRepository = accountRoleRepository;
             _employeeRepository = employeeRepository;
-            _accountStudentRepository = accountStudentRepository;
-            _accountStudentRepository = accountStudentRepository;
-            _studentRepository = studentRepository;
-            _studentRoleRepository = accountStudentRoleRepository;
         }
 
         [AllowAnonymous]
         [HttpPost("Auth")]
-        public async Task<ActionResult<Account>> LoginAsync(LoginVM loginVM)
+        public async Task<IActionResult> LoginAsync(LoginVM loginVM)
         {
             try
             {
-                var resultEmployee = await _repository.LoginAsync(loginVM);
-                if (!resultEmployee)
+                var result = await _repository.LoginAsync(loginVM);
+                if (!result)
                 {
-                    var resultStudent = await _accountStudentRepository.LoginAsync(loginVM);
-
-                    if (!resultStudent)
+                    return NotFound(new
                     {
-                        return NotFound(new
-                        {
-                            statusCode = 404,
-                            message = "Data Not Found!"
-                        });
-                    }
-                    var userdataStudent = await _studentRepository.GetUserDataByEmailAsync(loginVM.Email);
-                    var claim = new List<Claim>()
-                    {
-                        new Claim(ClaimTypes.Email, userdataStudent.Email),
-                        new Claim(ClaimTypes.Name, userdataStudent.Email),
-                        new Claim(ClaimTypes.NameIdentifier, userdataStudent.FullName),
-                        new Claim("NIM", userdataStudent.Nik)
-                    };
-                    var getRolesStudent = await _studentRoleRepository.GetRolesByNimAsync(userdataStudent.Nik);
-                    foreach (var item in getRolesStudent)
-                    {
-                        claim.Add(new Claim(ClaimTypes.Role, item));
-                    }
-                    var accessTokenstudent = _tokenService.GenerateAccessToken(claim);
-                    return Ok(new
-                    {
-                        Code = StatusCodes.Status200OK,
-                        Status = HttpStatusCode.OK.ToString(),
-                        Data = accessTokenstudent
+                        StatusCode = StatusCodes.Status404NotFound,
+                        Message = HttpStatusCode.NotFound.ToString(),
+                        Data = "Data Not Found!",
                     });
                 }
 
-                var userdata = await _employeeRepository.GetUserDataByEmailAsync(loginVM.Email);
+                var userdata = await _employeeRepository.GetUserDataByEmailAsync(loginVM.Email!);
                 var claims = new List<Claim>()
-            {
-                new Claim(ClaimTypes.Email, userdata.Email),
-                new Claim(ClaimTypes.Name, userdata.Email),
-                new Claim(ClaimTypes.NameIdentifier, userdata.FullName),
-                new Claim("NIK", userdata.Nik)
-            };
+                {
+                    new Claim(ClaimTypes.Email, userdata.Email!),
+                    new Claim(ClaimTypes.NameIdentifier, userdata.FullName!),
+                    new Claim("NIK", userdata.Nik)
+                };
 
                 var getRoles = await _accountRoleRepository.GetRolesByNikAsync(userdata.Nik);
 
@@ -98,15 +64,12 @@ namespace Magang_API.Controllers
                 }
 
                 var accessToken = _tokenService.GenerateAccessToken(claims);
-                //var refreshToken = _tokenService.GenerateRefreshToken();
-
-                //await _repository.UpdateToken(userdata.Email, refreshToken, DateTime.Now.AddDays(1)); // Token will expired in a day
 
                 return Ok(new
                 {
-                    Code = StatusCodes.Status200OK,
-                    Status = HttpStatusCode.OK.ToString(),
-                    Data = accessToken
+                    StatusCode = StatusCodes.Status200OK,
+                    Message = HttpStatusCode.OK.ToString(),
+                    Data = accessToken,
                 });
             }
             catch
@@ -114,18 +77,15 @@ namespace Magang_API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError,
                                   new
                                   {
-                                      Code = StatusCodes.Status500InternalServerError,
-                                      Status = "Internal Server Error",
-                                      Errors = new
-                                      {
-                                          Message = "Invalid Salt Version"
-                                      },
+                                      StatusCode = StatusCodes.Status500InternalServerError,
+                                      Message = HttpStatusCode.InternalServerError.ToString(),
+                                      Data = "Internal Server Error!",
                                   });
             }
         }
 
         [AllowAnonymous]
-        [HttpPost("RegisterEmployee")]
+        [HttpPost("Register")]
         public async Task<IActionResult> RegisterEmployeeAsync(RegisterVM registerVM)
         {
             try
@@ -133,39 +93,9 @@ namespace Magang_API.Controllers
                 await _repository.RegisterAsync(registerVM);
                 return Ok(new
                 {
-                    code = StatusCodes.Status200OK,
-                    status = HttpStatusCode.OK.ToString(),
-                    data = new
-                    {
-                        Message = "Data Has Successfully Saved",
-                    }
-                });
-            }
-            catch
-            {
-                return NotFound(new
-                {
-                    code = StatusCodes.Status400BadRequest,
-                    status = HttpStatusCode.BadRequest.ToString(),
-                    data = new
-                    {
-                        message = "Server Cannot Process Request"
-                    }
-                });
-            }
-        }
-        [AllowAnonymous]
-        [HttpPost("RegisterStudent")]
-        public async Task<IActionResult> RegisterStudentAsync(RegisterStudentVM registerstudentVM)
-        {
-            try
-            {
-                await _accountStudentRepository.RegisterStudentAsync(registerstudentVM);
-                return Ok(new
-                {
-                    code = StatusCodes.Status200OK,
-                    status = HttpStatusCode.OK.ToString(),
-                    data = new
+                    StatusCode = StatusCodes.Status200OK,
+                    StatusMessage = HttpStatusCode.OK.ToString(),
+                    Data = new
                     {
                         Message = "Data Has Successfully Saved",
                     }
