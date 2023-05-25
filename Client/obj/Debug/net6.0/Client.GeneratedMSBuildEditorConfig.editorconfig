@@ -48,6 +48,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXFN0dWRlbnROZWVkQXByb3ZhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Pembina/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVtYmluYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Pembina/NilaiStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVtYmluYVxOaWxhaVN0dWRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -75,6 +83,10 @@ build_metadata.AdditionalFiles.CssScope = b-nlmfk728pm
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/LayoutHrd.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dEhyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-7tbzbvmlwm
+
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/PembinaLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBlbWJpbmFMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-vj9izg60nz
 
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s

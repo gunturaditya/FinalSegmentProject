@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "PembinaLayout";
+}
+
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table id="tableNilaiStudent" class="table table-striped table-hover table-bordered table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nim</th>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Universitas</th>
+                    <th>Major</th>
+                    <th>End Date</th>
+                    <th>Date Now</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<form class="needs-validation" novalidate>
+    <div class="modal fade" id="ModalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <b><h5 class="modal-title text-center" id="exampleModalLabel">Penilaian</h5></b>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nim</label>
+                        <input type="text" class="form-control" id="nim" placeholder="Nim">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Keaktifan</label>
+                        <input type="number" class="form-control" id="keaktifan">
+                    </div>
+                    <div class="mb-3 ">
+                        <label class="form-label">Kehadiran</label>
+                        <input type="number" class="form-control" id="kehadiran">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tugas</label>
+                        <input type="number" class="form-control" id="tugas">
+                    </div>
+                </div>
+
+
+                <div class="modal-footer justify-content-md-start ">
+                    <button type="button" class="btn btn-secondary col-md-2 " data-bs-dismiss="modal">Close</button>
+                    <div class="col-md-5"></div>
+                    <button type="button" class="btn btn-success col-md-4" onclick="InputNilai()">Input</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts{
+    <script src="~/js/Pembina.js"></script>
+}

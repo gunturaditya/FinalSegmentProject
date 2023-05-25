@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Client.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\Image\\user.png",
+      "PackagePath": "staticwebassets\\Image\\user.png"
+    },
+    {
       "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\SbAdmin\\.browserslistrc",
       "PackagePath": "staticwebassets\\SbAdmin\\.browserslistrc"
     },
@@ -7517,6 +7521,10 @@
       "PackagePath": "staticwebassets\\SbAdmin\\vendor\\jquery\\jquery.slim.min.map"
     },
     {
+      "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\css\\LayoutPembina.css",
+      "PackagePath": "staticwebassets\\css\\LayoutPembina.css"
+    },
+    {
       "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -7529,8 +7537,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\js\\Auth.js",
+      "PackagePath": "staticwebassets\\js\\Auth.js"
+    },
+    {
       "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\js\\Hrd.js",
       "PackagePath": "staticwebassets\\js\\Hrd.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\js\\Pembina.js",
+      "PackagePath": "staticwebassets\\js\\Pembina.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\js\\layoutPembina.js",
+      "PackagePath": "staticwebassets\\js\\layoutPembina.js"
     },
     {
       "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\js\\site.js",

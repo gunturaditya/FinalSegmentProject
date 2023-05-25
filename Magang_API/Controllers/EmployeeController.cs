@@ -13,8 +13,10 @@ namespace Magang_API.Controllers
     public class EmployeeController : BaseController<Employee, IEmployeeRepository, string>
 
     {
-        public EmployeeController(IEmployeeRepository repository) : base(repository)
+        private readonly IStudentRepository _studentRepository;
+        public EmployeeController(IEmployeeRepository repository, IStudentRepository studentRepository) : base(repository)
         {
+            _studentRepository = studentRepository;
         }
         [HttpGet("ProfileEmployee")]
         public async Task<ActionResult> ProfileEmployee()
@@ -76,6 +78,35 @@ namespace Magang_API.Controllers
                 statusCode = 200,
                 message = "Data Found!",
                 data = result
+            });
+        }
+
+        [HttpPut("Penilaian/{nim}")]
+        public async Task<ActionResult> StudentAprovalTrue(Penilaian penilaian, string nim)
+        {
+            var result = await _studentRepository.IsExist(nim);
+            if (!result)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+
+            var update = await _repository.StudentScore(penilaian);
+            if (update is 0)
+            {
+                return Conflict(new
+                {
+                    statusCode = 409,
+                    message = "Data Fail to Update!"
+                });
+            }
+            return Ok(new
+            {
+                statusCode = 200,
+                message = "Data Updated!"
             });
         }
     }

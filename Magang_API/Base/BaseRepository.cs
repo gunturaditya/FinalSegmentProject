@@ -51,7 +51,7 @@ namespace Magang_API.Base
             return result;
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity)
+     virtual public async Task<TEntity> UpdateAsync(TEntity entity)
         {
             _context.Set<TEntity>().Update(entity);
             await _context.SaveChangesAsync();

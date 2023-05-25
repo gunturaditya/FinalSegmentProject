@@ -21,6 +21,7 @@ namespace Magang_API.Repository.Contracts
         Task<IEnumerable<StudentProfilVM>> GetAllStudentProfil();
 
         Task<IEnumerable<dynamic>> GetStudentByNik(string nik);
+        Task<IEnumerable<dynamic>> GetStudentPenilaian(string nik);
         Task<IEnumerable<dynamic>> GetStudentByNim(string nim);
 
         Task<IEnumerable<StudentChart>> GetStudentCharts();

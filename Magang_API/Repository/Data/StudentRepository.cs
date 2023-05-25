@@ -172,6 +172,36 @@ namespace Magang_API.Repository.Data
                           };
             return getdata;
         }
+        public async Task<IEnumerable<dynamic>> GetStudentPenilaian(string nik)
+        {
+            var data = await _context.Statuses.Where(x => x.MentorId == nik).ToListAsync();
+            var students = await GetAllStudentProfil();
+            var getdata = from student in students
+                          join x in data
+                          on student.Nim equals x.StudentId
+                          where x.EndDate <= DateTime.Now && x.Status1 == true
+                          let enddate = DateOnly.FromDateTime(x.EndDate.Value)
+                          let datenow = DateOnly.FromDateTime(DateTime.Now)
+                          select new
+                          {
+                              student.Nim,
+                              student.FullName,
+                              student.Email,
+                              student.University,
+                              student.Major,
+                              student.Degree,
+                              student.Gpa,
+                              student.StartDate,
+                              enddate,
+                              datenow,
+                              student.Status,
+                              student.Mentor,
+                              x.MentorId
+
+                          };
+            return getdata;
+
+        }
 
         public async Task<IEnumerable<dynamic>> GetStudentByNim(string nim)
         {
@@ -189,6 +219,9 @@ namespace Magang_API.Repository.Data
                               d.Major,
                               d.Degree,
                               d.Gpa,
+                              d.StartDate,
+                              d.EndDate,
+                              d.Mentor,
                           };
             return getdata;
         }
@@ -222,6 +255,8 @@ namespace Magang_API.Repository.Data
 
             return students;              
         }
+
+
 
         public async Task<IEnumerable<string>> GetUniversitasAsyncbyid(int id)
         {

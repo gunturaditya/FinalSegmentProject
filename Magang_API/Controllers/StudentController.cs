@@ -216,6 +216,25 @@ namespace Magang_API.Controllers
                 data = result
             });
         }
+        [HttpGet("Penilaian/{nik}")]
+        public async Task<ActionResult> getStudentNilaiByNik(string nik)
+        {
+            var result = await _repository.GetStudentPenilaian(nik);
+            if (result.Count() is 0)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+            return Ok(new
+            {
+                statusCode = 200,
+                message = "Data Found!",
+                data = result
+            });
+        }
         [HttpGet("StudentByNim/{nim}")]
         public async Task<ActionResult> getStudentByNim(string nim)
         {

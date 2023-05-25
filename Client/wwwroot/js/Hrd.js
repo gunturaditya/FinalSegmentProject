@@ -226,6 +226,8 @@ function getNimStudent(stringUrl) {
             $("#Major").html(val.major);
             $("#degree").html(val.degree);
             $("#Gpa").html(val.gpa);
+            $("#startdate").html(val.startDate);
+            $("#enddate").html(val.endDate);
         })
     })
 }

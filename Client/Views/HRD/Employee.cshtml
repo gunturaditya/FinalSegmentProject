@@ -55,15 +55,18 @@
 <div class="modal fade" id="ModalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header row">
-                <b><h5 class="modal-title text-center" id="exampleModalLabel">Profil Student</h5></b>
+            <div class="modal-header ">
 
+                 <b><h5 class="modal-title text-center" id="exampleModalLabel">Profil Student</h5></b>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-4" style="border:1px solid; width:80px;height:100px;"></div>
-                    <div class="col-md-8">
+
+               <img src="~/Image/user.png" class="col-md-5 p-0"   style="width:220px;height:300px" />
+ 
+                    <div class="col-md-6 ">
                            <div class="mb-2"> 
                                <h3 class="text-center" id="fullname"></h3>
                            </div>
@@ -85,9 +88,13 @@
                         <div class="mb-2">
                             <span>Gpa : </span> <span id="Gpa"></span>
                         </div>
+                        <div class="mb-2">
+                            <span>Start Date : </span> <span id="startdate"></span>
+                        </div>
+                        <span>End Date : </span> <span id="enddate"></span>
                     </div>
-                    </div>
-                </div>
+                   </div>
+                 </div>
                
 
             <div class="modal-footer justify-content-md-start ">

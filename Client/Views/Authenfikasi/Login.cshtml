@@ -4,49 +4,40 @@
     ViewData["Title"] = "Login";
     Layout = "AuthLayout";
 }
-<div class="row">
-    <b> <h1 class="text-center text-white">Sistem Magang Mahasiswa</h1></b>
-</div>
-
-
-
-<hr />
-<div class="container-fluid">
-    <div class="card my-5 col-lg-6 mx-auto">
-        <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="p-5">
-                <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+<div class="card my-5 col-lg-6">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="p-5">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Sistem Magang Mahasiswa</h1>
+            </div>
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.Message
                 </div>
-                @if (ViewBag.Message != null)
-                {
-                    <div class="alert alert-danger" role="alert">
-                        @ViewBag.Message
-                    </div>
-                }
-                <form asp-action="Login" class="user">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group mb-3">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control form-control-user"
-                               id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control form-control-user"
-                               id="exampleInputPassword" placeholder="Password" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Login" class="btn btn-primary btn-user btn-block" />
-                    </div>
-                </form>
-                <hr>
-                <div class="text-center">
-                    <a class="small" href="register.html">Create an Account!</a>
+            }
+            <button id="student" type="button" class="btn btn-primary my-3">Student</button>
+            <button id="employee" type="button" class="btn btn-light my-3">Employee</button>
+            <form asp-action="Login" class="user">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group mb-3">
+                    <input asp-for="Email" class="form-control form-control-user"
+                           id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
+                <div class="form-group mb-3">
+                    <input asp-for="Password" class="form-control form-control-user"
+                           id="exampleInputPassword" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary btn-user btn-block" />
+                </div>
+            </form>
+            <hr>
+            <div class="text-center">
+                <a class="small" href="Authenfikasi/register">Create an Account!</a>
             </div>
         </div>
     </div>
@@ -56,5 +47,6 @@
 
 
 @section Scripts {
+    <script src="~/js/auth.js"></script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

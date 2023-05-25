@@ -1,5 +1,6 @@
 ﻿using Client.Repository.Interface;
 using Client.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -10,16 +11,20 @@ namespace Client.Controllers
     {
         private readonly IAccountRepository _accountRepository;
         private readonly IAccountStudentRepository _accountStudentRepository;
+
         public AuthenfikasiController(IAccountRepository accountRepository,
                               IAccountStudentRepository accountStudentRepository)
         {
             _accountRepository = accountRepository;
             _accountStudentRepository = accountStudentRepository;
         }
-        public IActionResult Login()
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Login()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
@@ -60,7 +65,8 @@ namespace Client.Controllers
             }
             return View();
         }
-        [HttpPost]
+
+        [AllowAnonymous, HttpPost]
         public async Task<IActionResult> LoginEmployee(LoginVM loginVM)
         {
             try
@@ -96,22 +102,23 @@ namespace Client.Controllers
                     return RedirectToAction("Index", "HRD");
                 }
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Pembina");
             }
             catch
             {
                 var message = "Email or Password is incorrect ";
                 ViewBag.Message = message;
             }
-            return View();
+            return View("Login");
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Register()
         {
             return View();
         }
 
-        [HttpPost]
+        [AllowAnonymous, HttpPost]
         public async Task<IActionResult> Register(RegisterStudentVM registerStudentVM)
         {
             try
@@ -129,7 +136,7 @@ namespace Client.Controllers
                     return View();
                 }
 
-                return RedirectToAction("Login", "Authenfikasi");
+                return RedirectToAction("Login", "Auth");
             }
             catch
             {
@@ -157,7 +164,7 @@ namespace Client.Controllers
                     return View("Register");
                 }
 
-                return RedirectToAction("Login", "Auth");
+                return RedirectToAction("Login", "Authenfikasi");
             }
             catch
             {

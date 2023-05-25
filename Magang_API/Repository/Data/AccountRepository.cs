@@ -105,85 +105,96 @@ namespace Magang_API.Repository.Data
             }
         }
 
-/*        public async Task RegisterStudentAsync(RegisterStudentVM registerStudentVM)
+        public override Task<Account> UpdateAsync(Account entity)
         {
-            using var transaction = _context.Database.BeginTransaction();
-            try
+            var account = new Account
             {
+                AccountId = entity.AccountId,
+                Password = Hashing.HashPassword(entity.Password)
+            };
+            return base.UpdateAsync(account);
+        }
 
-                var university = new University
-                {
-                    Name = registerStudentVM.UniversityName
-                };
-                if (await _universityRepository.IsNameExistAsync(registerStudentVM.UniversityName))
-                {
-                    var univData = _universityRepository.GetByNameAsync(registerStudentVM.UniversityName);
-                    university.Id = univData.Id;
-                }
-                else
-                {
-                    await _universityRepository.InsertAsync(university);
-                }
 
-                var education = new Education
+        /*        public async Task RegisterStudentAsync(RegisterStudentVM registerStudentVM)
                 {
-                    Major = registerStudentVM.Major,
-                    Degree = registerStudentVM.Degree,
-                    Gpa = registerStudentVM.GPA,
-                    UniversityId = university.Id,
-                };
-                await _educationRepository.InsertAsync(education);
+                    using var transaction = _context.Database.BeginTransaction();
+                    try
+                    {
 
-                var student = new Student
-                {
-                    StartDate = registerStudentVM.StartDate,
-                    EndDate = registerStudentVM.EndDate
-                };
-                await _studentRepository.InsertAsync(student);
+                        var university = new University
+                        {
+                            Name = registerStudentVM.UniversityName
+                        };
+                        if (await _universityRepository.IsNameExistAsync(registerStudentVM.UniversityName))
+                        {
+                            var univData = _universityRepository.GetByNameAsync(registerStudentVM.UniversityName);
+                            university.Id = univData.Id;
+                        }
+                        else
+                        {
+                            await _universityRepository.InsertAsync(university);
+                        }
 
-                // Employee
-                var employee = new Employee
-                {
-                    Id = registerStudentVM.Id,
-                    FirstName = registerStudentVM.FirstName,
-                    LastName = registerStudentVM.LastName,
-                    BirthDate = registerStudentVM.BirthDate,
-                    Gender = registerStudentVM.Gender,
-                    PhoneNumber = registerStudentVM.PhoneNumber,
-                    Email = registerStudentVM.Email,
-                    HiringDate = DateTime.Now,
-                    StudentId = student.Id
-                };
-                await _employeeRepository.InsertAsync(employee);
-                // Account
-                var account = new Account
-                {
-                    AccountId = registerStudentVM.Id,
-                    Password = registerStudentVM.Password,
-                };
-                await InsertAsync(account);
-                // Profiling
-                var profiling = new Profiling
-                {
-                    ProfilingId = registerStudentVM.Id,
-                    EducationId = education.Id,
-                };
-                await _profilingRepository.InsertAsync(profiling);
-                // AccountRole
-                var accountRole = new AccountRole
-                {
-                    RoleId = 1,
-                    AccountId = registerStudentVM.Id,
-                };
-                await _accountRoleRepository.InsertAsync(accountRole);
+                        var education = new Education
+                        {
+                            Major = registerStudentVM.Major,
+                            Degree = registerStudentVM.Degree,
+                            Gpa = registerStudentVM.GPA,
+                            UniversityId = university.Id,
+                        };
+                        await _educationRepository.InsertAsync(education);
 
-                await transaction.CommitAsync();
-            }
-            catch
-            {
-                await transaction.RollbackAsync();
-            }
-        }*/
+                        var student = new Student
+                        {
+                            StartDate = registerStudentVM.StartDate,
+                            EndDate = registerStudentVM.EndDate
+                        };
+                        await _studentRepository.InsertAsync(student);
+
+                        // Employee
+                        var employee = new Employee
+                        {
+                            Id = registerStudentVM.Id,
+                            FirstName = registerStudentVM.FirstName,
+                            LastName = registerStudentVM.LastName,
+                            BirthDate = registerStudentVM.BirthDate,
+                            Gender = registerStudentVM.Gender,
+                            PhoneNumber = registerStudentVM.PhoneNumber,
+                            Email = registerStudentVM.Email,
+                            HiringDate = DateTime.Now,
+                            StudentId = student.Id
+                        };
+                        await _employeeRepository.InsertAsync(employee);
+                        // Account
+                        var account = new Account
+                        {
+                            AccountId = registerStudentVM.Id,
+                            Password = registerStudentVM.Password,
+                        };
+                        await InsertAsync(account);
+                        // Profiling
+                        var profiling = new Profiling
+                        {
+                            ProfilingId = registerStudentVM.Id,
+                            EducationId = education.Id,
+                        };
+                        await _profilingRepository.InsertAsync(profiling);
+                        // AccountRole
+                        var accountRole = new AccountRole
+                        {
+                            RoleId = 1,
+                            AccountId = registerStudentVM.Id,
+                        };
+                        await _accountRoleRepository.InsertAsync(accountRole);
+
+                        await transaction.CommitAsync();
+                    }
+                    catch
+                    {
+                        await transaction.RollbackAsync();
+                    }
+                }*/
 
         public async Task<bool> LoginAsync(LoginVM loginVM)
         {

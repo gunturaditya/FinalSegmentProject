@@ -12,9 +12,14 @@ namespace Magang_API.Repository.Data
     public class EmployeeRepository : BaseRepository<Employee, string, MyContexts>, IEmployeeRepository
     {
         private readonly IAccountRoleRepository _accountRoleRepository;
-        public EmployeeRepository(MyContexts context, IAccountRoleRepository accountRoleRepository) : base(context)
+        private readonly IStudentRepository _studentRepository;
+        private readonly IStatusRepository _statusRepository;
+        public EmployeeRepository(MyContexts context, IAccountRoleRepository accountRoleRepository, IStudentRepository studentRepository,
+            IStatusRepository statusRepository) : base(context)
         {
             _accountRoleRepository = accountRoleRepository;
+            _studentRepository = studentRepository;
+            _statusRepository = statusRepository;
         }
 
         public async Task<IEnumerable<dynamic>> GetDataEmployePembina()
@@ -127,6 +132,62 @@ namespace Magang_API.Repository.Data
                 Email = employee.Email,
                 FullName = string.Concat(employee.FirstName, " ", employee.LastName)
             };
+        }
+
+        public async Task<int> StudentScore(Penilaian nilai)
+        {
+            var status = await _statusRepository.GetByIdAsync(nilai.Nim);
+            var data = await _studentRepository.GetByIdAsync(nilai.Nim);
+            
+            if(status == null) {
+                var student1 = new Student
+                {
+                    Nim = nilai.Nim,
+                    Email = data.Email,
+                    BirthDate = data.BirthDate,
+                    Degree = data.Degree,
+                    FirstName = data.FirstName,
+                    Gpa = data.Gpa,
+                    IsApproval = data.IsApproval,
+                    LastName = data.LastName,
+                    Major = data.Major,
+                    PhoneNumber = data.PhoneNumber,
+                    Score = nilai.Score,
+                    UniversitasId = data.UniversitasId,
+                };
+                _context.Students.Update(student1);
+               return await _context.SaveChangesAsync();
+            }
+            var student = new Student
+            {
+                Nim = nilai.Nim,
+                Email =data.Email,
+                BirthDate = data.BirthDate,
+                Degree = data.Degree,
+                FirstName = data.FirstName,
+                Gpa = data.Gpa,
+                IsApproval = data.IsApproval,
+                LastName = data.LastName,
+                Major = data.Major,
+                PhoneNumber = data.PhoneNumber,
+                Score = nilai.Score,
+                UniversitasId = data.UniversitasId,
+            };
+            _context.Students.Update(student);
+           await _context.SaveChangesAsync();
+
+            var Status = new Status
+            {
+                Status1 = false,
+                StudentId = nilai.Nim,
+                EndDate = status.EndDate,
+                DepartmentId =status.DepartmentId,
+                MentorId = status.MentorId,
+                StartDate = status.StartDate,
+                
+            };
+            _context.Statuses.Update(Status);
+            return await _context.SaveChangesAsync();
         }
     }
 }

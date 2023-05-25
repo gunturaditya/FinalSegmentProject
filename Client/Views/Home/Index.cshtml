@@ -79,7 +79,16 @@
 </div>
 
 
-
+<script>
+    const token = '@Context.Session.GetString("JWToken")';
+    const nim = '@Context.Session.GetString("NIM")';
+    const fullname = '@Context.Session.GetString("FullName")';
+    const role = '@Context.Session.GetString("Role")';
+    sessionStorage.setItem("token", token);
+    sessionStorage.setItem("nim", nim);
+    sessionStorage.setItem("fullname", fullname);
+    sessionStorage.setItem("role", role);
+</script>
 
 
 
