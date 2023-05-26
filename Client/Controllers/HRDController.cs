@@ -53,5 +53,9 @@ namespace Client.Controllers
         {
             return View();
         }
-    }
+		public IActionResult Profil()
+		{
+			return View();
+		}
+	}
 }

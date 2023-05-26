@@ -62,7 +62,7 @@ namespace Magang_API.Controllers
         {
             var result = await _repository.GetAllStudentsNoAproval();
 
-            if (result.Count()==0)
+            if (result == null)
             {
                 return NotFound(new
                 {

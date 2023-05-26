@@ -56,7 +56,7 @@ namespace Client.Controllers
                 HttpContext.Session.SetString("FullName", fullname);
                 HttpContext.Session.SetString("NIM", nim);
                 HttpContext.Session.SetString("Role", role);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Student");
             }
             catch
             {

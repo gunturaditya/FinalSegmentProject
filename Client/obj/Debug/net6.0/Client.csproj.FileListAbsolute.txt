@@ -256,3 +256,4 @@ C:\Users\LENOVO\source\repos\FinalProjectApi\Client\obj\Debug\net6.0\Client.pdb
 C:\Users\LENOVO\source\repos\FinalProjectApi\Client\obj\Debug\net6.0\Client.genruntimeconfig.cache
 C:\Users\LENOVO\source\repos\FinalProjectApi\Client\obj\Debug\net6.0\ref\Client.dll
 C:\Users\LENOVO\source\repos\FinalProjectApi\Client\obj\Debug\net6.0\scopedcss\Views\Shared\PembinaLayout.cshtml.rz.scp.css
+C:\Users\LENOVO\source\repos\FinalProjectApi\Client\obj\Debug\net6.0\scopedcss\Views\Shared\StudentLayout.cshtml.rz.scp.css

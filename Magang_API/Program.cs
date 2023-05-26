@@ -16,6 +16,7 @@ builder.Services.AddControllers();
 
 var ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<MyContexts>(options => options.UseSqlServer(ConnectionString));
+
 builder.Services.AddCors(options =>
                         options.AddDefaultPolicy(policy => {
                             policy.AllowAnyOrigin();

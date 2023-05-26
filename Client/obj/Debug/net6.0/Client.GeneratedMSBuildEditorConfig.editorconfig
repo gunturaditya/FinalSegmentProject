@@ -44,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/HRD/Profil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXFByb2ZpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/HRD/StudentNeedAproval.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXFN0dWRlbnROZWVkQXByb3ZhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -56,12 +60,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVtYmluYVxOaWxhaVN0dWRlbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Pembina/Profil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVtYmluYVxQcm9maWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Student/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/University/Index.cshtml]
@@ -87,6 +99,10 @@ build_metadata.AdditionalFiles.CssScope = b-7tbzbvmlwm
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/PembinaLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBlbWJpbmFMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-vj9izg60nz
+
+[C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/StudentLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFN0dWRlbnRMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-z6naiilavc
 
 [C:/Users/LENOVO/source/repos/FinalProjectApi/Client/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s

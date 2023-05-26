@@ -1,9 +1,28 @@
 ﻿console.log("TES1")
+let nik = $("#getnik").html();
 $.ajax({
     url: "https://localhost:7004/api/Student"
 }).done((res) => {
     console.log(res)
 });
+
+$.ajax({
+    url: "https://localhost:7004/api/Employee/Profil/" + nik,
+    type: "Get",
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    data: "json"
+}).done(res => {
+    console.log(res);
+    $("#firstname").val(res.data[0].firstName);
+    $("#lastname").val(res.data[0].lastName);
+    $("#email").val(res.data[0].email);
+    $("#university").val(res.data[0].university);
+    $("#degree").val(res.data[0].degree);
+    $("#phonenumber").val(res.data[0].phoneNumber);
+});
+
 
 /*function getById(stringUrl) {
     $.ajax({
@@ -249,13 +268,16 @@ function getById(stringUrl) {
         $("#gpa").val(res.data[0].gpa);
     })
 }
+function hilang_spasi(string) {
+    return string.split(' ').join('');
+}
 
 function Aproval() {
 
     let nim = $("#nim").val();
 
     var obj = new Object();
-    obj.Nim = nim;
+    obj.Nim = hilang_spasi(nim);
 
     $.ajax({
         url: "https://localhost:7004/api/Student/AprovalTrue/" + nim,
@@ -291,7 +313,7 @@ function NoAproval() {
     let nim = $("#nim").val();
 
     var obj = new Object();
-    obj.Nim = nim;
+    obj.Nim = hilang_spasi(nim);
 
     $.ajax({
         url: "https://localhost:7004/api/Student/AprovalFalse/" + nim,
@@ -440,6 +462,45 @@ function DeleteStudent(stringUrl) {
             )
         }
     })
+}
+function changePass() {
+
+    let pass = $("#pass").val();
+    let confirm = $("#confirmPass").val();
+    if (pass != confirm) {
+        $("#validate").html("password do not match")
+    } else {
+        var obj = new Object();
+        obj.accountId = nik;
+        obj.password = confirm;
+        $.ajax({
+            url: "https://localhost:7004/api/Account/" + nik,
+            type: "put",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(obj)
+        }).done((result) => {
+            console.log(result);
+
+            Swal.fire(
+                'Berhasil?',
+                'input data',
+                'success',
+            )
+
+            //buat alert pemberitahuan jika success
+        }).fail((error) => {
+            console.log(error)
+            Swal.fire(
+                'Gagal?',
+                'input data',
+                'warning'
+            )
+            //alert pemberitahuan jika gagal
+        })
+    }
+
 }
 
 let xmlhttp = new XMLHttpRequest();

@@ -58,8 +58,29 @@ namespace Magang_API.Controllers
                 data = result
             });
         }
+		[HttpGet("getEmployee/{nim}")]
+		public async Task<ActionResult<EmployeeProfileVM>> EmployeeGetByNim(string nim)
+		{
+			var result = await _repository.GetEmployeeByNim(nim);
 
-        [HttpGet("employe/{DepartmentId}")]
+
+			if (result is null)
+			{
+				return NotFound(new
+				{
+					statusCode = 404,
+					message = "Data Not Found!"
+				});
+			}
+			return Ok(new
+			{
+				statusCode = 200,
+				message = "Data Found!",
+				data = result
+			});
+		}
+
+		[HttpGet("employe/{DepartmentId}")]
         public async Task<ActionResult<EmployeeProfileVM>> EmployeeGetByDepartment(int DepartmentId)
         {
             var result = await _repository.GetEmployeeByIdDepartment(DepartmentId);

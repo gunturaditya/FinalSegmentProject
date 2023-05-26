@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "K53Kmjg8Avjg436yvjkI0C2Y6sc3ITl/OhO55W2Hszo=",
+  "Hash": "fahP1hPUmNK8HoZ21eZyk1s9yvJgJWJXri2w4YwKnVw=",
   "Source": "Client",
   "BasePath": "_content/Client",
   "Mode": "Default",
@@ -68,6 +68,23 @@
       "OriginalItemSpec": "wwwroot\\css\\LayoutPembina.css"
     },
     {
+      "Identity": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\css\\Profil.css",
+      "SourceId": "Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\",
+      "BasePath": "_content/Client",
+      "RelativePath": "css/Profil.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Profil.css"
+    },
+    {
       "Identity": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\css\\site.css",
       "SourceId": "Client",
       "SourceType": "Discovered",
@@ -83,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\css\\Student.css",
+      "SourceId": "Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\",
+      "BasePath": "_content/Client",
+      "RelativePath": "css/Student.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Student.css"
     },
     {
       "Identity": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\css\\styles.css",

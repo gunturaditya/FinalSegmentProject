@@ -13,5 +13,7 @@ namespace Magang_API.ViewModel
         public decimal Gpa { get; set; }
         public string University { get; set; }
         public DateTime HiringDate { get; set; }
+
+        public string PhoneNumber { get; set; }
     }
 }

@@ -7525,6 +7525,14 @@
       "PackagePath": "staticwebassets\\css\\LayoutPembina.css"
     },
     {
+      "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\css\\Profil.css",
+      "PackagePath": "staticwebassets\\css\\Profil.css"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\css\\Student.css",
+      "PackagePath": "staticwebassets\\css\\Student.css"
+    },
+    {
       "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

@@ -30,6 +30,65 @@
  </div>
 
 
+<div class="modal fade" id="ModalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+
+                <b><h5 class="modal-title text-center" id="exampleModalLabel">Profil Student</h5></b>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+
+                    <img src="~/Image/user.png" class="col-md-5 p-0" style="width:220px;height:300px" />
+
+                    <div class="col-md-6 ">
+                        <div class="mb-2">
+                            <h3 class="text-center" id="fullname"></h3>
+                        </div>
+                        <div class="mb-2">
+                            <span>NIM : </span> <span id="Nim"></span>
+                        </div>
+                        <div class="mb-2">
+                            <span>Email : </span> <span id="email"></span>
+                        </div>
+                        <div class="mb-2">
+                            <span>Score : </span> <span id="score"></span>
+                        </div>
+                        <div class="mb-2">
+                            <span>Universitas : </span> <span id="universias"></span>
+                        </div>
+                        <div class="mb-2">
+                            <span>Major : </span> <span id="Major"></span>
+                        </div>
+                        <div class="mb-2">
+                            <span>Degree : </span> <span id="degree"></span>
+                        </div>
+                        <div class="mb-2">
+                            <span>Gpa : </span> <span id="Gpa"></span>
+                        </div>
+                        <div class="mb-2">
+                            <span>Start Date : </span> <span id="startdate"></span>
+                        </div>
+                        <span>End Date : </span> <span id="enddate"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal-footer justify-content-md-start ">
+
+                <button type="button" class="btn btn-secondary col-md-2 " data-bs-dismiss="modal">Close</button>
+                <div class="col-md-7"></div>
+                <button type="button" class="btn btn-success col-md-2" onclick="SimpanStatus()">Simpan</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 @section Scripts{

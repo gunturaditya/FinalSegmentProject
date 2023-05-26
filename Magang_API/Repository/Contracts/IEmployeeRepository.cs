@@ -14,6 +14,8 @@ namespace Magang_API.Repository.Contracts
 
         Task<IEnumerable<dynamic>> GetEmployeeByIdDepartment(int id);
 
+        Task<IEnumerable<dynamic>> GetEmployeeByNim(string nim);
+
         Task<int> StudentScore(Penilaian nilai);
     }
 }

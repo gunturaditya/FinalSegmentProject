@@ -72,7 +72,8 @@ namespace Magang_API.Repository.Data
                                Degree= e.Degree,
                                Gpa= (decimal)e.Gpa,
                                HiringDate = em.HiringDate,
-                               Major = e.Major
+                               Major = e.Major,
+                               PhoneNumber = em.PhoneNumber
                            }).ToListAsync();
 
             return await getData;
@@ -97,7 +98,8 @@ namespace Magang_API.Repository.Data
                               e.Major,
                               e.Email,
                               e.Degree,
-                              e.University
+                              e.University,
+                              e.PhoneNumber
                           };
 
             return getdata ;
@@ -123,7 +125,30 @@ namespace Magang_API.Repository.Data
             return getdata ;
         }
 
-        public async Task<UserDataVM> GetUserDataByEmailAsync(string email)
+		public async Task<IEnumerable<dynamic>> GetEmployeeByNim(string nim)
+		{
+			var student = await _context.Statuses.Where(x=>x.StudentId==nim).ToListAsync();
+            var employee = await GetDataProfile();
+            var getdata = from s in student
+                          join e in employee
+                           on s.MentorId equals e.Nik
+                           join d in _context.Departments
+                           on s.DepartmentId equals d.Id
+                          select new
+                          {
+                              e.Nik,
+                              e.FullName,
+                              e.Gender,
+                              d.Name,
+                              e.Major,
+                              e.University
+                              
+                          };
+            return getdata ;
+
+		}
+
+		public async Task<UserDataVM> GetUserDataByEmailAsync(string email)
         {
             var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Email == email);
             return new UserDataVM

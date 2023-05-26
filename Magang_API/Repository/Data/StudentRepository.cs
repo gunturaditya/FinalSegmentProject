@@ -38,6 +38,7 @@ namespace Magang_API.Repository.Data
             };
             _context.Students.Update(student);
             return await _context.SaveChangesAsync();
+
         }
 
         public async Task<int> AprovalTrue(StudentAproval aproval)
@@ -222,6 +223,7 @@ namespace Magang_API.Repository.Data
                               d.StartDate,
                               d.EndDate,
                               d.Mentor,
+                              s.Score
                           };
             return getdata;
         }

@@ -19,7 +19,7 @@ builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IAccountStudentRepository, AccountStudentRepository>();
 
 builder.Services.AddSession(options => {
-    options.IdleTimeout = TimeSpan.FromSeconds(30);
+    options.IdleTimeout = TimeSpan.FromSeconds(60);
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
