@@ -7557,6 +7557,10 @@
       "PackagePath": "staticwebassets\\js\\Pembina.js"
     },
     {
+      "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\js\\Student.js",
+      "PackagePath": "staticwebassets\\js\\Student.js"
+    },
+    {
       "Id": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\js\\layoutPembina.js",
       "PackagePath": "staticwebassets\\js\\layoutPembina.js"
     },

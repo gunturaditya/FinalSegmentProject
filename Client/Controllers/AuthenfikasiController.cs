@@ -26,6 +26,7 @@ namespace Client.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
             try
@@ -67,6 +68,7 @@ namespace Client.Controllers
         }
 
         [AllowAnonymous, HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> LoginEmployee(LoginVM loginVM)
         {
             try
@@ -136,7 +138,7 @@ namespace Client.Controllers
                     return View();
                 }
 
-                return RedirectToAction("Login", "Auth");
+                return RedirectToAction("Login", "Authenfikasi");
             }
             catch
             {
@@ -172,6 +174,17 @@ namespace Client.Controllers
                 ViewBag.messagge = message;
             }
             return View("Register");
+        }
+        public async Task<IActionResult> LogOut()
+        {
+            HttpContext.Response.Cookies.Delete("JWToken");
+            HttpContext.Response.Cookies.Delete("Email");
+            HttpContext.Response.Cookies.Delete("FullName");
+            HttpContext.Response.Cookies.Delete("NIK");
+            HttpContext.Response.Cookies.Delete("NIM");
+            HttpContext.Response.Cookies.Delete("Role");
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Authenfikasi");
         }
     }
 }

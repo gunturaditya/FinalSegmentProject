@@ -141,7 +141,9 @@ namespace Magang_API.Repository.Data
                               e.Gender,
                               d.Name,
                               e.Major,
-                              e.University
+                              e.University,
+                              e.PhoneNumber,
+                              e.Email,
                               
                           };
             return getdata ;

@@ -1,0 +1,117 @@
+﻿@model Client.ViewModel.RegisterVM
+
+@{
+    ViewData["Title"] = "Regis";
+    Layout = "LayoutHrd";
+}
+
+<div class="container">
+    <h1>Register Employee</h1>
+    <hr />
+
+    <div class="card my-3">
+        <div class="card-header bg-primary text-light">
+            Register Employee
+        </div>
+        <div class="card-body">
+            <form asp-action="CreateEmployee">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label asp-for="NIK" class="form-label"></label>
+                            <input asp-for="NIK" class="form-control" />
+                            <span asp-validation-for="NIK" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label asp-for="FirstName" class="form-label"></label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="BirthDate" class="form-label"></label>
+                            <input asp-for="BirthDate" class="form-control" />
+                            <span asp-validation-for="BirthDate" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Major" class="form-label"></label>
+                            <input asp-for="Major" class="form-control" />
+                            <span asp-validation-for="Major" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="GPA" class="form-label"></label>
+                            <input asp-for="GPA" class="form-control" />
+                            <span asp-validation-for="GPA" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="DepartmentName" class="form-label"></label>
+                            <input asp-for="DepartmentName" class="form-control" />
+                            <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label asp-for="LastName" class="form-label"></label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Gender" class="form-label"></label>
+                            <select asp-for="Gender" class="form-control" asp-items="ViewBag.Gender"></select>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="PhoneNumber" class="form-label"></label>
+                            <input asp-for="PhoneNumber" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Degree" class="form-label"></label>
+                            <input asp-for="Degree" class="form-control" />
+                            <span asp-validation-for="Degree" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="UniversityName" class="form-label"></label>
+                            <input asp-for="UniversityName" class="form-control" />
+                            <span asp-validation-for="UniversityName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label"></label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label asp-for="ConfirmPassword" class="form-label"></label>
+                                <input asp-for="ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="submit" value="Register" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

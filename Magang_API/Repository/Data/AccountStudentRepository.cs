@@ -110,5 +110,15 @@ namespace Magang_API.Repository.Data
             }
         }
 
-    }
+		public override Task<AccountStudent> UpdateAsync(AccountStudent entity)
+		{
+            var account = new AccountStudent
+            {
+                AccountStudentId = entity.AccountStudentId,
+                Password = Hashing.HashPassword(entity.Password)
+            };
+			return base.UpdateAsync(account);
+		}
+
+	}
 }

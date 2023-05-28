@@ -21,27 +21,24 @@
 		<h5 class="brand text-center" style="margin-left:50px;">
 			@HttpContextAccessor.HttpContext.Session.GetString("Role")
 		</h5>
-
+		<hr class="mx-4" style="border: solid 1px" />
 		<ul class="side-menu">
-			<li><a href="Index"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
+			<li><a asp-controller="HRD" asp-action="Index"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
 			<li class="divider" data-text="main">Main</li>
-			<li><a href="Employee"><i class='bx bxs-chart icon'></i> Employee</a></li>
+			<hr class="mx-3" style="border: solid 1px" />
+			<li><a asp-controller="HRD" asp-action="Employee"><i class='bx bxs-chart icon'></i> Employee</a></li>
 			<li>
 				<a href="#"><i class='bx bxs-inbox icon'></i> Student <i class='bx bx-chevron-right icon-right'></i></a>
 				<ul class="side-dropdown">
-					<li><a href="StudentNeedAproval">Aproval</a></li>
-					<li><a href="Aproval">Penempatan</a></li>
+					<li><a asp-controller="HRD" asp-action="StudentNeedAproval">Aproval</a></li>
+					<li><a asp-controller="HRD" asp-action="Aproval">Penempatan</a></li>
 				</ul>
 			</li>
-			
-			<li></li>
-			<li></li>
-			<li></li>
+			<hr class="mx-3" style="border: solid 1px" />
+			<li class="divider" data-text="Account">Account</li>
+			<li><a asp-controller="Authenfikasi" asp-action="Logout"><i class='bx bx-user-x icon'></i> Logout</a></li>
 		</ul>
 
-		<div class="wrapper">
-			<a href="#" class="btn-upgrade">Logout</a>
-		</div>
 	</section>
 	<!-- SIDEBAR -->
 	<!-- NAVBAR -->
@@ -62,8 +59,8 @@
 				<div id="getnik" class="text-center">@HttpContextAccessor.HttpContext.Session.GetString("NIK")</div>
 
 				<ul class="profile-link">
-					<li><a href="Profil"><i class='bx bxs-user-circle icon'></i> Profile</a></li>
-					<li><a href="#"><i class='bx bxs-log-out-circle'></i> Logout</a></li>
+					<li><a asp-action="Profil"><i class='bx bxs-user-circle icon'></i> Profile</a></li>
+					<li><a asp-controller="Authenfikasi" asp-action="Logout"><i class='bx bxs-log-out-circle'></i> Logout</a></li>
 				</ul>
 			</div>
 		</nav>

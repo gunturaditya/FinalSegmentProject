@@ -4,49 +4,132 @@
 @{
     Layout = "StudentLayout";
 }
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Poppins', sans-serif;
-        background-color: #ddd;
-        align-items: center;
-        justify-content: center;
-    }
 
-</style>
 
-<div class="container">
-    <div class="box">
-        <img src="~/Image/user.png" alt="">
-        <ul>
-            <li><button class="btn btn-secondary" style="width:100%;height:50%">Mentor</button></li>
-            <li><button class="btn btn-secondary" style="width:100%;height:50%">Score</button></li>
-            <li></li>
-            <li><button class="btn btn-danger" style="width:100%;height:50%">Logout</button></li>
-        </ul>
-    </div>
-    <div class="About">
-        <ul>
-            <h1 class="text-center">@HttpContextAccessor.HttpContext.Session.GetString("FullName")</h1>
-        </ul>
-        <ul>
-            <h3 class="d-inline-block">NIM :</h3>
-            <h3 class="d-inline-block">@HttpContextAccessor.HttpContext.Session.GetString("NIM")</h3>
-        </ul>
-        <ul>
-            <h3>Gender</h3>
-            <li>male</li>
-        </ul>
-        <ul>
-            <h3>Country</h3>
-        </ul>
-        <ul>
-            <h3>More Info</h3>
-        </ul>
-        <ul>
-            <h3>Contact</h3>
-            <li>example@gmail.com</li>
-        </ul>
+<div class="row mb-3">
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Hi, @HttpContextAccessor.HttpContext.Session.GetString("FullName") Welcome!
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">@HttpContextAccessor.HttpContext.Session.GetString("Role")</h6>
+                <p class="card-text">Please wait for your approval for internship. Please check your profile again if there is a data error. and complete your cv as attractive as possible.</p>
+            </div>
+        </div>
     </div>
 </div>
+
+<section class="row">
+    <div class="col-lg-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 mb-3">
+                        <h5 class="mb-0">Data Pribadi</h5>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="mb-0">Full Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">@HttpContextAccessor.HttpContext.Session.GetString("FullName")</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">NIM</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0" id="nim">@HttpContextAccessor.HttpContext.Session.GetString("NIM")</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Start Date</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0" id="startdate"></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">End Date</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0"id="enddate"></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0" >Score</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0" id="score"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 mb-3">
+                        <h5 class="mb-0">Data Mentor</h5>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="mb-0">Full Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0"id="fullname"></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0" id="email"></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Phone</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0" id="phone"></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Department</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0" id="department"></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Gender</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0" id="gender"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="~/js/Student.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+}

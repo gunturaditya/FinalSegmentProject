@@ -4,64 +4,65 @@
 }
 <link rel="stylesheet" href="~/css/Profil.css" asp-append-version="true" />
 
-<section class="py-5">
+<section class="my-3">
 	<div class="container">
-		<h1 class="mb-5">Account Settings</h1>
-		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+		<h5 class="mb-3">Account Settings</h5>
+		<hr style="border:solid 2px black;" class="my-3" />
+		<div class="bg-white shadow rounded-lg d-block d-sm-flex px-3">
 			<div class="profile-tab-nav border-right">
 				<div class="p-4">
 					<div class="img-circle text-center mb-3">
-						<img src="~/Image/user.png" alt="Image" class="shadow">
+						<img style="width:100px; height:100px; border-radius:10px;" src="~/Image/user.png" alt="Image" class="shadow">
 					</div>
 					<h4 class="text-center">@HttpContextAccessor.HttpContext.Session.GetString("FullName")</h4>
 				</div>
 				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 					<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
 						<i class="fa fa-home text-center mr-1"></i>
-						Profil
+						Profile
 					</a>
 					<a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
 						<i class="fa fa-key text-center mr-1"></i>
-						Password
+						Change Password
 					</a>
 				</div>
 			</div>
 			<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 				<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
-					<h3 class="mb-4">Profil</h3>
+					<h3 class="mb-4">Profile</h3>
 					<div class="row">
 						<div class="col-md-6">
-							<div class="form-group">
+							<div class="mb-3">
 								<label>First Name</label>
 								<input type="text" class="form-control" id="firstname" value="" readonly>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="form-group">
+							<div class="mb-3">
 								<label>Last Name</label>
 								<input type="text" class="form-control" id="lastname" value="" readonly>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="form-group">
+							<div class="mb-3">
 								<label>Email</label>
-								<input type="text" class="form-control"id="email" value="" readonly>
+								<input type="text" class="form-control" id="email" value="" readonly>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="form-group">
-								<label>PhoneNumber</label>
+							<div class="mb-3">
+								<label>Phone number</label>
 								<input type="text" class="form-control" id="phonenumber" value="" readonly>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="form-group">
+							<div class="mb-3">
 								<label>Degree</label>
 								<input type="text" class="form-control" id="degree" value="" readonly>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="form-group">
+							<div class="mb-3">
 								<label>University</label>
 								<input type="text" class="form-control" id="university" value="" readonly>
 							</div>
@@ -72,16 +73,16 @@
 					<h3 class="mb-4">Password Settings</h3>
 					<div class="row">
 						<div class="col-md-6">
-							
+
 							<label>Password</label>
 							<input type="password" class="form-control" id="pass">
-							<span  class="text-danger"></span>
-					
+							<span class="text-danger"></span>
+
 						</div>
 						<div class="col-md-6">
-						<label>ConfirmPassword</label>
-						<input type="password" class="form-control" id="confirmPass">
-						<div id="validate" class="text-danger"></div>
+							<label>ConfirmPassword</label>
+							<input type="password" class="form-control" id="confirmPass">
+							<div id="validate" class="text-danger"></div>
 						</div>
 					</div>
 					<div class="mt-5">

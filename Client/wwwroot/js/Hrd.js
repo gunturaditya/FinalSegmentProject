@@ -79,6 +79,31 @@ $(document).ready(function () {
         $("#StudentAproval").html(res.data);
     })
 
+
+    $.ajax({
+        url: "https://localhost:7004/api/Status/CountTrueStatus",
+        type: "Get",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: "json"
+    }).done(res => {
+       // console.log(res.data);
+        $("#StudentStatusTrue").html(res.data);
+    })
+
+    $.ajax({
+        url: "https://localhost:7004/api/Status/CountFalseStatus",
+        type: "Get",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: "json"
+    }).done(res => {
+        //console.log(res.data);
+        $("#StudentStatusFalse").html(res.data);
+    })
+
     table.DataTable({
 
         "ajax": {
@@ -213,7 +238,7 @@ function getBynik(stringUrl) {
     $.ajax({
         url: "https://localhost:7004/api/Student/student/" + stringUrl
     }).done((res) => {
-        console.log(res);
+       
         let temp = "";
         $.each(res.data, (key, val) => {
             

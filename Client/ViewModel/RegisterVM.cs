@@ -6,6 +6,7 @@ namespace Client.ViewModel
 {
     public class RegisterVM
     {
+        [MaxLength(5, ErrorMessage = "maximum {1} characters allowed")]
         public string NIK { get; set; }
 
         // First Name

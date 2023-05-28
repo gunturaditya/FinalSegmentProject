@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fahP1hPUmNK8HoZ21eZyk1s9yvJgJWJXri2w4YwKnVw=",
+  "Hash": "q+4ugw6e20l6w27RUOnvfG1n5SajZqJ7muf7RbIwRNA=",
   "Source": "Client",
   "BasePath": "_content/Client",
   "Mode": "Default",
@@ -253,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\js\\Student.js",
+      "SourceId": "Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\",
+      "BasePath": "_content/Client",
+      "RelativePath": "js/Student.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Student.js"
     },
     {
       "Identity": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
