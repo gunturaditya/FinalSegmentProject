@@ -1,0 +1,61 @@
+﻿@using Client.ViewModel;
+@model FileVM
+@{
+    Layout = "StudentLayout";
+}
+
+<div class="row mb-3">
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body">
+                <form asp-controller="Student" asp-action="UploadCv" method="post" enctype="multipart/form-data">
+                    <p class="text-danger">* Format PDF</p>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Upload CV</label>
+                        <input class="form-control" type="file" name="file" id="formFile">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if(Model != null)
+{
+    <div class="row mb-3">
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-bordered table-stripped" cellpadding="0" cellspacing="0" border="1">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>PDF Name</th>
+                                <th>Display Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (FileVM file in Model.Files)
+                            {
+                                <tr>
+                                    <td>@file.FileId</td>
+                                    <td>@file.FileName</td>
+                                    <td>
+                                        @*<a href="../Student/UploadCv?fileName=@file.FileName" style="margin-right:10px;">this page</a>*@
+                                        <a href="../Student/PDFViewerNewTab?fileName=@file.FileName" target="_blank">New Tab</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>    
+}
+
+<br />
+<br />
+@*<embed id="embPDF" src="~/files/@Model.FileName" style="width:100%; height:1200px;"/>*@
