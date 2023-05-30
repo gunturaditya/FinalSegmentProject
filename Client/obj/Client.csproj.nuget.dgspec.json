@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\Client.csproj": {}
+    "E:\\code\\visual studio\\Magang_API\\Clients\\Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\Client.csproj": {
+    "E:\\code\\visual studio\\Magang_API\\Clients\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\Client.csproj",
+        "projectUniqueName": "E:\\code\\visual studio\\Magang_API\\Clients\\Client.csproj",
         "projectName": "Client",
-        "projectPath": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\Client.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Client\\obj\\",
+        "projectPath": "E:\\code\\visual studio\\Magang_API\\Clients\\Client.csproj",
+        "packagesPath": "C:\\Users\\XWarDragonX\\.nuget\\packages\\",
+        "outputPath": "E:\\code\\visual studio\\Magang_API\\Clients\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\XWarDragonX\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,9 +40,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.13, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [

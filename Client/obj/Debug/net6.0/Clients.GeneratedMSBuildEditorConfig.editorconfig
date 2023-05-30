@@ -1,0 +1,81 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Clients
+build_property.RootNamespace = Clients
+build_property.ProjectDir = E:\code\visual studio\Magang_API\Clients\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\code\visual studio\Magang_API\Clients
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/Authenfikasi/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVuZmlrYXNpXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/Authenfikasi/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVuZmlrYXNpXFJlZ2lzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/HRD/Aproval.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXEFwcm92YWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/HRD/Employee.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXEVtcGxveWVlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/HRD/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/HRD/StudentNeedAproval.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJEXFN0dWRlbnROZWVkQXByb3ZhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/University/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pdmVyc2l0eVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/code/visual studio/Magang_API/Clients/Views/Shared/AuthLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEF1dGhMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-q6sbzxzm5e
+
+[E:/code/visual studio/Magang_API/Clients/Views/Shared/LayoutHrd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dEhyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-xlv0hqk9ly
+
+[E:/code/visual studio/Magang_API/Clients/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-c992ss80nw

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Client.ViewModel.StudentNullAprovalVM>
+
+@{
+    ViewData["Title"] = "Waiting Approval";
+    Layout = "LayoutHrd";
+}
+<div class="card">
+    <div class="card-header bg-primary text-light">
+        Waiting for Approval
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="tableStudent" class="table table-striped table-hover table-bordered table-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nim</th>
+                        <th>Fullname</th>
+                        <th>Email</th>
+                        <th>Universitas</th>
+                        <th>Major</th>
+                        <th>Degree</th>
+                        <th>GPA</th>
+                        <th>phoneNumber</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*modal*@
+<form class="needs-validation" novalidate>
+    <div class="modal fade" id="ModalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <b><h5 class="modal-title text-center" id="exampleModalLabel">Aproval</h5></b>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nim</label>
+                        <input type="text" class="form-control" id="nim" placeholder="Nim" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">FullName</label>
+                        <input type="text" class="form-control" id="fullname" placeholder="Fullname" readonly>
+                    </div>
+                    <div class="mb-3 ">
+                        <label class="form-label">Universitas</label>
+                        <input type="text" class="form-control" id="universitas" placeholder="Nama Universitas" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label">Major</label>
+                                <input type="text" class="form-control" id="major" placeholder="Major" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Degree</label>
+                                <input type="text" class="form-control" id="degree" placeholder="Degree" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">GPA</label>
+                                <input type="text" class="form-control" id="gpa" placeholder="GPA" readonly>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-md-start ">
+                    <button type="button" class="btn btn-secondary col-md-2 " data-bs-dismiss="modal">Close</button>
+                    <div class="col-md-5"></div>
+                    <button type="button" class="btn btn-success col-md-2" onclick="Aproval()">Yes</button>
+                    <button type="submit" class="btn btn-danger col-md-2" onclick="NoAproval()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+@section Scripts{
+    <script src="~/js/Hrd.js"></script>
+}

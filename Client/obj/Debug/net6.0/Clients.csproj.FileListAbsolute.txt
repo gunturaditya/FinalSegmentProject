@@ -1,0 +1,8 @@
+E:\code\visual studio\Magang_API\Clients\obj\Debug\net6.0\Clients.csproj.AssemblyReference.cache
+E:\code\visual studio\Magang_API\Clients\obj\Debug\net6.0\Clients.GeneratedMSBuildEditorConfig.editorconfig
+E:\code\visual studio\Magang_API\Clients\obj\Debug\net6.0\Clients.AssemblyInfoInputs.cache
+E:\code\visual studio\Magang_API\Clients\obj\Debug\net6.0\Clients.AssemblyInfo.cs
+E:\code\visual studio\Magang_API\Clients\obj\Debug\net6.0\Clients.csproj.CoreCompileInputs.cache
+E:\code\visual studio\Magang_API\Clients\obj\Debug\net6.0\Clients.MvcApplicationPartsAssemblyInfo.cache
+E:\code\visual studio\Magang_API\Clients\obj\Debug\net6.0\Clients.RazorAssemblyInfo.cache
+E:\code\visual studio\Magang_API\Clients\obj\Debug\net6.0\Clients.RazorAssemblyInfo.cs
