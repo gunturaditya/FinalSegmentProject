@@ -1,4 +1,4 @@
-﻿using Magang_API.Context;
+﻿using Magang_API.Contexts;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -7,7 +7,7 @@ namespace Magang_API.Base
 {
     public class BaseRepository<TEntity, TKey, TContext> : IBaseRepository<TEntity, TKey>
     where TEntity : class
-    where TContext : MyContexts
+    where TContext : MyContext
     {
         protected TContext _context;
 
@@ -15,7 +15,7 @@ namespace Magang_API.Base
         {
             _context = context;
         }
-        public async Task<int> DeleteAsync(TKey key)
+       virtual public async Task<int> DeleteAsync(TKey key)
         {
             var entity = await GetByIdAsync(key);
             if (entity is null)
@@ -51,7 +51,7 @@ namespace Magang_API.Base
             return result;
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity)
+     virtual public async Task<TEntity> UpdateAsync(TEntity entity)
         {
             _context.Set<TEntity>().Update(entity);
             await _context.SaveChangesAsync();
