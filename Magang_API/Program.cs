@@ -1,5 +1,4 @@
-using Magang_API.Context;
-
+using Magang_API.Contexts;
 using Magang_API.Handler;
 using Magang_API.Repository.Contracts;
 using Magang_API.Repository.Data;
@@ -11,19 +10,14 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
-
 var ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<MyContexts>(options => options.UseSqlServer(ConnectionString));
+builder.Services.AddDbContext<MyContext>(options => options.UseSqlServer(ConnectionString));
 builder.Services.AddCors(options =>
                         options.AddDefaultPolicy(policy => {
                             policy.AllowAnyOrigin();
                             policy.AllowAnyHeader();
                             policy.AllowAnyMethod();
                         }));
-
-
 
 builder.Services.AddScoped<IAccountRoleRepository, AccountRoleRepository>();
 builder.Services.AddScoped<IEducationRepository, EducationRepository>();
@@ -38,6 +32,8 @@ builder.Services.AddScoped<IStatusRepository, StatusRepository>();
 builder.Services.AddScoped<IAccountStudentRepository, AccountStudentRepository>();
 builder.Services.AddScoped<IAccountStudentRoleRepository, AccountStudentRoleRepository>();
 builder.Services.AddTransient<ITokenService, TokenService>();
+
+builder.Services.AddControllers();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
        .AddJwtBearer(options => {
