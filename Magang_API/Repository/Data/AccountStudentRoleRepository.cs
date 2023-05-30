@@ -1,16 +1,16 @@
 ﻿using Magang_API.Base;
-using Magang_API.Context;
-using Magang_API.Model;
+using Magang_API.Contexts;
+using Magang_API.Models;
 using Magang_API.Repository.Contracts;
 
 namespace Magang_API.Repository.Data
 {
-    public class AccountStudentRoleRepository : BaseRepository<AccountStudentRole, string, MyContexts>, IAccountStudentRoleRepository
+    public class AccountStudentRoleRepository : BaseRepository<AccountStudentRole, string, MyContext>, IAccountStudentRoleRepository
     {
         private readonly IRoleRepository _roleRepository;
 
         public AccountStudentRoleRepository(
-            MyContexts context,
+            MyContext context,
             IRoleRepository roleRepository) : base(context)
         {
             _roleRepository = roleRepository;
@@ -22,7 +22,7 @@ namespace Magang_API.Repository.Data
             var getRole = await _roleRepository.GetAllAsync();
 
             var getRoleByNim = from ar in getAccountRoleByAccountNik
-                               join r in getRole on ar.RoleStudentId equals r.Id
+                               join r in getRole on ar.RoleId equals r.Id
                                select r.Name;
 
             return getRoleByNim;

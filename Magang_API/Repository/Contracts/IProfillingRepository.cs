@@ -1,5 +1,5 @@
 ﻿using Magang_API.Base;
-using Magang_API.Model;
+using Magang_API.Models;
 
 
 namespace Magang_API.Repository.Contracts

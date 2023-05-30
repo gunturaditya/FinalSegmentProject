@@ -1,4 +1,4 @@
-﻿using Magang_API.Model;
+﻿using Magang_API.Models;
 
 using System.ComponentModel.DataAnnotations;
 

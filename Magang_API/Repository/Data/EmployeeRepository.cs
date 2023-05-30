@@ -1,7 +1,7 @@
 ﻿using Magang_API.Base;
-using Magang_API.Context;
+using Magang_API.Contexts;
 
-using Magang_API.Model;
+using Magang_API.Models;
 
 using Magang_API.Repository.Contracts;
 using Magang_API.ViewModel;
@@ -9,12 +9,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Magang_API.Repository.Data
 {
-    public class EmployeeRepository : BaseRepository<Employee, string, MyContexts>, IEmployeeRepository
+    public class EmployeeRepository : BaseRepository<Employee, string, MyContext>, IEmployeeRepository
     {
         private readonly IAccountRoleRepository _accountRoleRepository;
-        public EmployeeRepository(MyContexts context, IAccountRoleRepository accountRoleRepository) : base(context)
+        private readonly IStudentRepository _studentRepository;
+        private readonly IStatusRepository _statusRepository;
+        public EmployeeRepository(MyContext context, IAccountRoleRepository accountRoleRepository, IStudentRepository studentRepository,
+            IStatusRepository statusRepository) : base(context)
         {
             _accountRoleRepository = accountRoleRepository;
+            _studentRepository = studentRepository;
+            _statusRepository = statusRepository;
         }
 
         public async Task<IEnumerable<dynamic>> GetDataEmployePembina()
@@ -67,7 +72,8 @@ namespace Magang_API.Repository.Data
                                Degree= e.Degree,
                                Gpa= (decimal)e.Gpa,
                                HiringDate = em.HiringDate,
-                               Major = e.Major
+                               Major = e.Major,
+                               PhoneNumber = em.PhoneNumber
                            }).ToListAsync();
 
             return await getData;
@@ -92,14 +98,57 @@ namespace Magang_API.Repository.Data
                               e.Major,
                               e.Email,
                               e.Degree,
-                              e.University
+                              e.University,
+                              e.PhoneNumber
                           };
 
             return getdata ;
 
         }
 
-        public async Task<UserDataVM> GetUserDataByEmailAsync(string email)
+        public async Task<IEnumerable<dynamic>> GetEmployeeByIdDepartment(int id)
+        {
+            var departments = await _context.Departments.Where(x=>x.Id==id).ToListAsync();
+
+            var employee = await GetAllAsync();
+
+            var getdata = from e in employee
+                          join d in departments
+                          on e.DepartmentId equals d.Id
+                          let fullname = string.Concat(e.FirstName + " " + e.LastName)
+                          select new
+                          {
+                              e.Nik,
+                              fullname,
+                              d.Name
+                          };
+            return getdata ;
+        }
+
+		public async Task<IEnumerable<dynamic>> GetEmployeeByNim(string nim)
+		{
+			var student = await _context.Statuses.Where(x=>x.StudentId==nim).ToListAsync();
+            var employee = await GetDataProfile();
+            var getdata = from s in student
+                          join e in employee
+                           on s.MentorId equals e.Nik
+                           join d in _context.Departments
+                           on s.DepartmentId equals d.Id
+                          select new
+                          {
+                              e.Nik,
+                              e.FullName,
+                              e.Gender,
+                              d.Name,
+                              e.Major,
+                              e.University
+                              
+                          };
+            return getdata ;
+
+		}
+
+		public async Task<UserDataVM> GetUserDataByEmailAsync(string email)
         {
             var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Email == email);
             return new UserDataVM
@@ -108,6 +157,62 @@ namespace Magang_API.Repository.Data
                 Email = employee.Email,
                 FullName = string.Concat(employee.FirstName, " ", employee.LastName)
             };
+        }
+
+        public async Task<int> StudentScore(Penilaian nilai)
+        {
+            var status = await _statusRepository.GetByIdAsync(nilai.Nim);
+            var data = await _studentRepository.GetByIdAsync(nilai.Nim);
+            
+            if(status == null) {
+                var student1 = new Student
+                {
+                    Nim = nilai.Nim,
+                    Email = data.Email,
+                    BirthDate = data.BirthDate,
+                    Degree = data.Degree,
+                    FirstName = data.FirstName,
+                    Gpa = data.Gpa,
+                    IsApproval = data.IsApproval,
+                    LastName = data.LastName,
+                    Major = data.Major,
+                    PhoneNumber = data.PhoneNumber,
+                    Score = nilai.Score,
+                    UniversitasId = data.UniversitasId,
+                };
+                _context.Students.Update(student1);
+               return await _context.SaveChangesAsync();
+            }
+            var student = new Student
+            {
+                Nim = nilai.Nim,
+                Email =data.Email,
+                BirthDate = data.BirthDate,
+                Degree = data.Degree,
+                FirstName = data.FirstName,
+                Gpa = data.Gpa,
+                IsApproval = data.IsApproval,
+                LastName = data.LastName,
+                Major = data.Major,
+                PhoneNumber = data.PhoneNumber,
+                Score = nilai.Score,
+                UniversitasId = data.UniversitasId,
+            };
+            _context.Students.Update(student);
+           await _context.SaveChangesAsync();
+
+            var Status = new Status
+            {
+                Status1 = false,
+                StudentId = nilai.Nim,
+                EndDate = status.EndDate,
+                DepartmentId =status.DepartmentId,
+                MentorId = status.MentorId,
+                StartDate = status.StartDate,
+                
+            };
+            _context.Statuses.Update(Status);
+            return await _context.SaveChangesAsync();
         }
     }
 }

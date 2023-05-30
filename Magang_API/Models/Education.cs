@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Magang_API.Model;
+namespace Magang_API.Models;
 
 public partial class Education
 {
@@ -15,8 +15,10 @@ public partial class Education
     public decimal? Gpa { get; set; }
 
     public int? UniversityId { get; set; }
+
     [JsonIgnore]
-    public virtual ICollection<Profiling>? Profilings { get; set; } = new List<Profiling>();
+    public virtual ICollection<Profiling> Profilings { get; set; } = new List<Profiling>();
+
     [JsonIgnore]
     public virtual University? University { get; set; }
 }

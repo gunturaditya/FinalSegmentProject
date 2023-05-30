@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Magang_API.Model;
+namespace Magang_API.Models;
 
 public partial class Student
 {
@@ -20,7 +20,7 @@ public partial class Student
 
     public decimal? Gpa { get; set; }
 
-    public bool? IsApproval { get; set; } = null!;
+    public bool? IsApproval { get; set; }
 
     public int? Score { get; set; }
 
@@ -29,10 +29,15 @@ public partial class Student
     public string? PhoneNumber { get; set; }
 
     public int? UniversitasId { get; set; }
+
+    public string? Document { get; set; }
+
     [JsonIgnore]
     public virtual AccountStudent? AccountStudent { get; set; }
+
     [JsonIgnore]
     public virtual Status? Status { get; set; }
+
     [JsonIgnore]
     public virtual University? Universitas { get; set; }
 }

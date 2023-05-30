@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Magang_API.Model;
+namespace Magang_API.Models;
 
 public partial class Employee
 {
@@ -23,15 +23,20 @@ public partial class Employee
     public string? PhoneNumber { get; set; }
 
     public int? DepartmentId { get; set; }
+
     [JsonIgnore]
     public virtual Account? Account { get; set; }
+
     [JsonIgnore]
     public virtual Department? Department { get; set; }
+
     [JsonIgnore]
     public virtual Profiling? Profiling { get; set; }
+
     [JsonIgnore]
-    public virtual ICollection<Status>? Statuses { get; set; } = new List<Status>();
+    public virtual ICollection<Status> Statuses { get; set; } = new List<Status>();
 }
+
 public enum Gender
 {
     Male, Female

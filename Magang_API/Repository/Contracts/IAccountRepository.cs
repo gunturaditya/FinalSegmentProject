@@ -1,5 +1,5 @@
 ﻿using Magang_API.Base;
-using Magang_API.Model;
+using Magang_API.Models;
 
 using Magang_API.ViewModel;
 

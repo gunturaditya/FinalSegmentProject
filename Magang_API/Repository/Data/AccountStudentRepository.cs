@@ -1,30 +1,40 @@
 ﻿using Magang_API.Base;
-using Magang_API.Context;
+using Magang_API.Contexts;
 using Magang_API.Handler;
-using Magang_API.Model;
+using Magang_API.Models;
 using Magang_API.Repository.Contracts;
 using Magang_API.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace Magang_API.Repository.Data
 {
-    public class AccountStudentRepository : BaseRepository<AccountStudent, string, MyContexts>, IAccountStudentRepository
+    public class AccountStudentRepository : BaseRepository<AccountStudent, string, MyContext>, IAccountStudentRepository
     {
         private readonly IUniversityRepository _universityRepository;
-        private readonly IStudentRepository _studentRepository;
         private readonly IAccountStudentRoleRepository _studentRoleRepository;
-        public AccountStudentRepository(MyContexts context,
+        private readonly IStudentRepository _studentRepository;
+        public AccountStudentRepository(MyContext context,
         IUniversityRepository universityRepository,
-        IStudentRepository studentRepository,IAccountStudentRoleRepository studentRoleRepository
+        IAccountStudentRoleRepository studentRoleRepository,IStudentRepository studentRepository
             ) : base(context)
         {
             _universityRepository = universityRepository;
-            _studentRepository = studentRepository;
             _studentRoleRepository = studentRoleRepository;
+            _studentRepository = studentRepository;
+        }
+
+        public async Task<int> DeleteAccount(string id)
+        {
+            await _studentRoleRepository.DeleteAsync(id);
+            await DeleteAsync(id);
+
+            return await _studentRepository.DeleteAsync(id);
+
         }
 
         public async Task<bool> LoginAsync(LoginVM loginVM)
         {
-            var getStudent = await _studentRepository.GetAllAsync();
+            var getStudent = await _context.Students.ToListAsync();
             var getAccounts = await GetAllAsync();
 
             var getUserData = getStudent.Join(getAccounts,
@@ -58,8 +68,7 @@ namespace Magang_API.Repository.Data
                     Name = registerStudentVM.UniversityName
                 });
 
-
-                // Employee
+                // Student
                 var student = new Student
                 {
                     Nim = registerStudentVM.NIM,
@@ -75,7 +84,8 @@ namespace Magang_API.Repository.Data
                     PhoneNumber = registerStudentVM.PhoneNumber,
 
                 };
-                await _studentRepository.InsertAsync(student);
+                await _context.Students.AddAsync(student);
+                await _context.SaveChangesAsync();
                 // Account
                 var account = new AccountStudent
                 {
@@ -87,7 +97,7 @@ namespace Magang_API.Repository.Data
                 // AccountRole
                 var accountRole = new AccountStudentRole
                 {
-                    RoleStudentId = 3,
+                    RoleId = 3,
                     AccountStudentId = registerStudentVM.NIM,
                 };
                 await _studentRoleRepository.InsertAsync(accountRole);
@@ -99,5 +109,6 @@ namespace Magang_API.Repository.Data
                 await transaction.RollbackAsync();
             }
         }
+
     }
 }

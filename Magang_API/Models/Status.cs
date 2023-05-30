@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Magang_API.Model;
+namespace Magang_API.Models;
 
 public partial class Status
 {
@@ -17,10 +17,13 @@ public partial class Status
     public DateTime? EndDate { get; set; }
 
     public bool? Status1 { get; set; }
+
     [JsonIgnore]
     public virtual Department? Department { get; set; }
+
     [JsonIgnore]
     public virtual Employee? Mentor { get; set; }
+
     [JsonIgnore]
-    public virtual Student? Student { get; set; } = null!;
+    public virtual Student Student { get; set; } = null!;
 }

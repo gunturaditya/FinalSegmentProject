@@ -1,4 +1,4 @@
-﻿using Magang_API.Model;
+﻿using Magang_API.Models;
 
 namespace Magang_API.ViewModel
 {
@@ -13,5 +13,7 @@ namespace Magang_API.ViewModel
         public decimal Gpa { get; set; }
         public string University { get; set; }
         public DateTime HiringDate { get; set; }
+
+        public string PhoneNumber { get; set; }
     }
 }

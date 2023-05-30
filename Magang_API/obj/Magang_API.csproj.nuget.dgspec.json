@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Magang_API\\Magang_API.csproj": {}
+    "E:\\code\\visual studio\\Magang_API\\Magang_API\\Magang_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Magang_API\\Magang_API.csproj": {
+    "E:\\code\\visual studio\\Magang_API\\Magang_API\\Magang_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Magang_API\\Magang_API.csproj",
+        "projectUniqueName": "E:\\code\\visual studio\\Magang_API\\Magang_API\\Magang_API.csproj",
         "projectName": "Magang_API",
-        "projectPath": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Magang_API\\Magang_API.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\source\\repos\\FinalProjectApi\\Magang_API\\obj\\",
+        "projectPath": "E:\\code\\visual studio\\Magang_API\\Magang_API\\Magang_API.csproj",
+        "packagesPath": "C:\\Users\\XWarDragonX\\.nuget\\packages\\",
+        "outputPath": "E:\\code\\visual studio\\Magang_API\\Magang_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\XWarDragonX\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -48,10 +48,6 @@
               "target": "Package",
               "version": "[6.0.16, )"
             },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[7.0.5, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.5, )"
@@ -62,21 +58,9 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[6.0.13, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.3, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[6.30.1, )"
             }
           },
           "imports": [

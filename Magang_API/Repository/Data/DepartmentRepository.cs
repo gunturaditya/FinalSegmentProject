@@ -1,14 +1,14 @@
 ﻿using Magang_API.Base;
-using Magang_API.Context;
-using Magang_API.Model;
+using Magang_API.Contexts;
+using Magang_API.Models;
 using Magang_API.Repository.Contracts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Magang_API.Repository.Data
 {
-    public class DepartmentRepository : BaseRepository<Department, int, MyContexts>, IDepartmentRepository
+    public class DepartmentRepository : BaseRepository<Department, int, MyContext>, IDepartmentRepository
     {
-        public DepartmentRepository(MyContexts context) : base(context) { }
+        public DepartmentRepository(MyContext context) : base(context) { }
         public async Task<Department?> GetByNameAsync(string name)
         {
             return await _context.Set<Department>().FirstOrDefaultAsync(x => x.Name == name);
